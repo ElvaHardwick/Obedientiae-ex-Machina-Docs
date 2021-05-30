@@ -161,7 +161,7 @@ $(function() {
 </ul>
 <textarea style="width: 100%;height: 30em;" id="beep">
 </textarea>
-<input type="button" click="convert_code" name="Convert" />
+<input type="button" click="convert_code" value="Convert" />
 
 <h2>
 Converted script:
