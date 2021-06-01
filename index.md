@@ -4,7 +4,7 @@ This is the menu that opens up when the  controller is first accessed
 
 ## Subsystems Menu
 
-Menu that controls the unit's subsystems through RLV. If the tick is next to the subsystem it means it is currently allowed, an x means it is restricted.
+Menu that controls the unit's subsystems through RLV. If the tick(✔) is next to the subsystem it means it is currently allowed, an ❌ means it is restricted.
 
 ### Video input
 Allows/denies the unit to see ( vision restrictions might depend on the viewer you are using )
@@ -27,10 +27,10 @@ one of it's uses is that the unit can't control the speakers in them, but other 
 
 ### Volume Level
 Has four levels:
-Mute(): doesn't allow chat.
-Whisper(): Only allows whisper
-No shout(): Allows normal and whisper, but no shouting.
-Normal(): No restriction applied.
+Mute(🔈): doesn't allow chat.
+Whisper(🔉): Only allows whisper
+No shout(🔇): Allows normal and whisper, but no shouting.
+Normal(🔊): No restriction applied.
 
 ### Movement...
 Submenu inside subsystems. Controls the Unit's abilities to move in the world.
@@ -40,16 +40,16 @@ Allows/denies the unit to Fly ()
 
 #### Teleport
 Has three levels.
-No teleport(): Doesn't allow any teleport
-Secured teleport((??????? not sure what this one does at the moment, I am guessing allows teleport by certain people))
-Teleport allowed():
+No teleport: Doesn't allow any teleport
+Secured teleport(🔒): The unit can't use the teleport, but others can teleport it
+Teleport allowed:
 
 #### Movement
 Has three levels:
 No movement: freezes the unit's motors, which doesn't mean they can't still use other methods of movement such as teleporting.
-Secured Movement(): takes away the control from the unit, but if there are external commands to move ( such as follow) the unit motors will answer to them
-Slow Movement(): Allows the unit only to walk, no running
-Normal Movement: Unit is able to walk and run normally
+Secured Movement(🔒): takes away the control from the unit, but if there are external commands to move ( such as follow) the unit motors will answer to them
+Slow Movement(▶): Allows the unit only to walk, no running
+Normal Movement(⏩): Unit is able to walk and run normally
 
 ### LoRa Comms.
 submenu that controls long range communications 
@@ -59,9 +59,9 @@ Allows/denies the unit to start long range communications ( Instant messages)
 
 #### Comms
 Once more, three levels, realted to Long Range(LoRa) communications ( Instant Messages ):
-Receive(): Only allows receiving
-Send(): Only allows sending
-Normal(): allows both sending and receiving
+Receive(⤵️): Only allows receiving
+Send(⤴️): Only allows sending
+Normal: allows both sending and receiving
 
 #### Email
 Allows/denies the unit to read emails ( Notecards )
@@ -75,6 +75,7 @@ Opens the preset menu, which will list the current saved Subsystems presets. You
 Not implemented **TODO**
 
 ### In. Filters 
+Not implemented **TODO**
 
 ### Out. release
 Allows/denies the unit to release their output ( allows them to use the command !release to free their voice from the controller )
@@ -84,6 +85,46 @@ Allows/denies the unit to release their output ( allows them to use the command 
 
 
 ## Administration
+
+### Access
+
+#### User list
+Lists of users with a role inside the unit's controller. You can click on them to modify their role or to remove them. You can also add new users to the controller, in which case the default role will be "user"
+
+#### Manage Roles
+**TODO**
+
+#### Blacklist
+List blacklisted avatars, if you click on them you can change their role or remove them from the blacklist
+
+#### Public Access
+**TODO**
+
+#### Self Access
+**TODO**
+
+### Personalization
+
+#### Name
+Opens a dialog to change the name of the unit
+#### Color
+Opens a dialog to change the color of the unit, it must be introduced in RGB format, with commas separating the numbers from 0-255. An example could be Red: 255,0,0
+
+#### Gender
+Allows the personalization of the unit's gender. By default it is They/them/theirs, but can be changed to she/her/hers, he/him/his or it/it/its
+
+
+### Software
+
+#### Installed
+List of installed software. If none is installed it will inform so and return to the Software page. If inside the menu you choose one o the softwares it will give you the more options
+
+
+#### Uninstall
+lists installed software so you can uninstall it
+
+#### Servers
+Lists OeM servers in the region, and if you choose one, connects you to them to install or update software
 
 ## Power
 
