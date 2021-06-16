@@ -101,7 +101,14 @@ List blacklisted avatars, if you click on them you can change their role or remo
 **TODO**
 
 #### Self Access
-**TODO**
+
+Toggles self access, so the unit can't access it's own controller. 
+
+#### Bolts
+Toggles the bolt status between three modes:
+on: Bolts are always on: this will lock the controller to the unit
+off: Bolts will be unlocked: this will allow the removal of the controller at all times.
+powered: Bolts will depend on the unit power status: if the power is off ( the unit is turned off) the bolts will be off. If the unit is on, the bolts will be on. 
 
 ### Personalization
 
@@ -153,7 +160,7 @@ Opens a menu which allows to set the distance from which the unit will follow
 Opens a Textbox to set the distance you want the unit to follow from (use a period if you want to set a decimal number)
 
 ## Programming
-Not implemented **TODO**
+Gives a menu with the different options programmed via notecards. 
 
 
 
