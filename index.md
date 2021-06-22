@@ -92,19 +92,32 @@ Allows/denies the unit to release their output ( allows them to use the command 
 Lists of users with a role inside the unit's controller. You can click on them to modify their role or to remove them. You can also add new users to the controller, in which case the default role will be "user"
 
 #### Manage Roles
-**TODO**
+It will list the different roles supported by this controller. If you have the permissions required you are able to open them and modify the permissions of each of the roles. 
+These are the current permissions supported:
++ Menu: grants access to the main menu, so it will be able to use the [follow](#follow) and [status](#status) functionalities.
++ Power: Allows turning on and off the unit as well as rebooting (grants access to [power menu](#power))
++ Subsystems: Allows access to the [subsystems menu](#subsystems-menu)
++ Programming: Allows access to the [programming menu](#prgramming)
++ Admin: Allows opening the [administration menu](#administration), therefor allowing [personalization](#personalization) and changing the controller [bolt setting](#bolts)
++ Software: Allows entering the [software menu](#software) to manage it. 
++ Add user: Allows adding or removing users via the [users menu](#user-list)
++ Access: Allows entering the [access menu](#access), thus allowing to add to blacklist, change the public access settings and the self access
++ Users: Allows modifying a user role via the [users menu](#user-list)
++ Roles: Allows opening this menu ([roles](#manage-roles)) to modify what each role can do
+
+As you might be able to see, some roles block others at the moment (since there is no other way to access the controller except via a menu), for example, having all permissions except Menu permission is useless, since you won't be able to access anything. In the future there will be more ways to access the controller and this won't matter as much.
 
 #### Blacklist
 List blacklisted avatars, if you click on them you can change their role or remove them from the blacklist
 
 #### Public Access
-**TODO**
+Opens the menu to modify the permissions to for those not listed in the controller as any role. It follows the same model as the one open in [Manage Roles](#manage-roles)
 
 #### Self Access
 
 Toggles self access, so the unit can't access it's own controller. 
 
-#### Bolts
+### Bolts
 Toggles the bolt status between three modes:
 on: Bolts are always on: this will lock the controller to the unit
 off: Bolts will be unlocked: this will allow the removal of the controller at all times.
