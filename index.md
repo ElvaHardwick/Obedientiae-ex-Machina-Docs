@@ -130,9 +130,10 @@ Opens a dialog to change the name of the unit
 #### Color
 Opens a dialog to change the color of the unit, it must be introduced in RGB format, with commas separating the numbers from 0-255. An example could be Red: 255,0,0
 
+This sends out messages via the lightbus protocol to color compatible attachments.
+
 #### Gender
 Allows the personalization of the unit's gender. By default it is They/them/theirs, but can be changed to she/her/hers, he/him/his or it/it/its
-
 
 ### Software
 
@@ -173,7 +174,10 @@ Opens a menu which allows to set the distance from which the unit will follow
 Opens a Textbox to set the distance you want the unit to follow from (use a period if you want to set a decimal number)
 
 ## Programming
-Gives a menu with the different options programmed via notecards. 
+Gives a menu with the different options programmed via notecards.
+These allow you to change many things, ranging from the Rules visible to the unit, to restrictions placed upon them.
+
+See [Notecard Scripting](./notecard-scripting) for more details.
 
 
 
