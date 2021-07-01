@@ -37,7 +37,7 @@ There are a few code 'blocks' that are available, see the [examples section](#ex
 ## Examples
 A few examples are provided in the out of the box configuration. They are reproduced here.
 
-The simplest file is p80-Customization, demonstrating setting configuration and how to add comments, as well as provide some default phrases for when a unit's [mind](/index#mind) is disabled:
+The simplest file is p80-Customization, demonstrating setting configuration and how to add comments, as well as provide some default phrases for when a unit's [mind](./#mind) is disabled:
 {% highlight javascript %}
 // This file demonstrates various customizable settings, you don't *need* to edit it, but doing so is recommended.
 // Also recommended for owners of new units
