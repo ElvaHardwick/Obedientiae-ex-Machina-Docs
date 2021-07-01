@@ -2,15 +2,15 @@
 
 The notecard system offers customizabillity to your unit, for both RP purposes, and restriction purposes.
 
-Most feature are configurable via either menu, or via notecard. If configured in notecard then that will take priority on either a reboot or a change of Programming option.
+Most features are configurable via either menu, or notecard. If configured in notecard then that will take priority on either a reboot or a change of Programming option.
 
 ## Installing new notecards
 
-There's a few options to install new notecards into a fresh unit:
+There are a few options to install new notecards into a fresh unit:
 
  * The unit can drop the notecard into the OeM logo on their controller HUD, or via the Second Life edit option.
  * A unit can be connected to a Software Server nearby, allowing both notecards and scripts to be installed. [ Work In Progress ]
- * Someone with a OeM Remote Control can connect to the unit and down- and upload notecards. [ Work In Progress ]
+ * Someone with a OeM Remote Control can connect to the unit and download and/or upload notecards. [ Work In Progress ]
 
 These are all of course accessible only to users with the appropriate rights, a unit without self access cannot manage their own programming.
 
@@ -20,7 +20,7 @@ These are all of course accessible only to users with the appropriate rights, a 
 Setting a variable is done by `variable_name = "value"` or `variable_name = other_variable`. Variables can be used for conditional blocks, or in strings. If you have a string says "Beep $variable_name$", and `variable_name` has the value 'boop' then it will be be replaced, output as "Beep boop"
 
 ## Blocks of code
-There's a few code 'blocks' that are available, see the [examples section](#examples) to show how they're used.
+There are a few code 'blocks' that are available, see the [examples section](#examples) to show how they're used.
  * `when variable =/!= "value" ..... end` - Evaluated whenever something is updated and the condition is still true
  * `on variable =/!= "value" ..... end` - Evaluated if the relevant variable is changed, and the condition is true.
  * `button ... option,option,option ... end` - Used to create buttons in the programming menu, the same button can be specified in multiple scripts, letting new options be added to it. The first option in the highest numbered notecard is set as default upon reboot.
