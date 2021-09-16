@@ -175,5 +175,6 @@ Opens a Textbox to set the distance you want the unit to follow from (use a peri
 ## Programming
 Gives a menu with the different options programmed via notecards. 
 
-
+## Devices
+Shows a list of the devices connected to the controller. If you click them you can obtain information about them, as well as diconnecting them.
 
