@@ -94,6 +94,8 @@ function convert_code() {
           return `${n[1]} "${n[2]}"`;
         case "wait":
           return `wait ${n[2]}`;
+        case "speechname":
+          return `set wearer_name=${n[2]}`;
         default:
           console.log(n);
           return `#Unknown: ${n[0]}`
