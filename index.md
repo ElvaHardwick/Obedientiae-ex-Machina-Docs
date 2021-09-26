@@ -7,13 +7,13 @@ This is the menu that opens up when the  controller is first accessed
 Menu that controls the unit's subsystems through RLV. If the tick(✔) is next to the subsystem it means it is currently allowed, an ❌ means it is restricted.
 
 ### Video input
-Allows/denies the unit to see ( vision restrictions might depend on the viewer you are using )
+Allows/denies the unit to see ( vision spheres of 1.5 meters are used )
 
 ### Audio Input
-Allows/denies the unit to hear chat and emotes. ((not xure if this automatically activated input filtering for emotes, would have to check. Doesn't clear the chat inside the emptes))**TODO**
+Allows/denies the unit to hear chat. Emotes will be preserved, but any chat will be turned into dots
 
 ### Radar
-Allows/denies the unit to see the radar, to see who is nearby ( doesn't restrict it from checking minimap)
+Allows/denies the unit to see the radar, to see who is nearby ( through minimap and nearby windows)
 
 ### Facial Recognition
 Allows/denies the unit to recognize those around them ( see their names and  nametags )
@@ -36,13 +36,13 @@ Normal(🔊): No restriction applied.
 Submenu inside subsystems. Controls the Unit's abilities to move in the world.
 
 #### Jetpack
-Allows/denies the unit to Fly ()
+Allows/denies the unit to Fly 
 
 #### Teleport
 Has three levels.
 No teleport: Doesn't allow any teleport
 Secured teleport(🔒): The unit can't use the teleport, but others can teleport it
-Teleport allowed:
+Teleport allowed: Allows teleport
 
 #### Movement
 Has three levels:
@@ -81,7 +81,7 @@ Not implemented **TODO**
 Allows/denies the unit to release their output ( allows them to use the command !release to free their voice from the controller )
 
 ### Release input./ Filter input
-(( currently blocks chat and emotes, but I am guessign the difference is that the chat is not completely blocked, but simply filtered))
+Not implemented
 
 
 ## Administration
@@ -159,13 +159,15 @@ Turns the unit on
 Reboots the unit
 
 ## Status
-Not implemented **TODO**
+At the moment gives very simple information. In the future it will give more.
 
 ## Applications
 Not implemented **TODO**
 
 ## Follow
-Opens a menu listing people and the distances to them. If you select one of them, the unit will follow them. Exactly the same path they take, the unit will take it too.
+Opens a menu listing people and the distances to them. If you select one of them, the unit will follow them. 
+One one avatar is selected, a new button will appear "~stop~" to stop the following.
+Both the robot and the person being followed will be informed when the unit begins and ends their following
 
 ### [Distance]
 Opens a menu which allows to set the distance from which the unit will follow
