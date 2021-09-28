@@ -7,8 +7,8 @@ The installer object must be the name of the Software in the following format:
 
 	<Name>_<version>
 	
-	- **Name** Must not contain an underscore ( "_" ) 
-	- **version** two numbers separated by a dot (".")
+	- Name: Must not contain an underscore ( "_" ) 
+	- Version: two numbers separated by a dot (".")
 
 ## Inside the installer
 
@@ -20,18 +20,19 @@ Inside this notecard, it will be divided by tags. Tags are public "names" for de
 
 Inside each tag, line by line, should be the name of the scripts, objects, notecards, sounds and textures that the tag should receive, except for this notecard itself. If some content is not listed in this notecard, it won't be uploaded to the controller.
 If some content is listed, but can't be found in the installer, the installer will notify you, and will not work until you fix the issue.
-	- **E.G. of how the inventory should look** 
-		- *Installer name*: HypnoApp_6.1 
-			- HypnoApplication_v6.1
-			- Triggers
-			- Info Notecard
-			- *Mandatory Notecard*: -HypnoApp_6.1
-				[[AccessPanel]]
-				- HypnoApplication_v6.1
-				- Info Notecard
-				[[HypnoGoogles]]
-				- Triggers
-				(there will be an example notecard in the future)
+### **E.G. of how the inventory should look** 
+	Installer name: HypnoApp_6.1 
+		HypnoApplication_v6.1
+		Triggers
+		Info Notecard
+		((Mandatory Notecard)): -HypnoApp_6.1
+			[[AccessPanel]]
+			HypnoApplication_v6.1
+			Info Notecard
+			[[HypnoGoogles]]
+			Triggers
+			
+(there will be an example notecard in the future)
 				
 ## Advance installation 				
 With this you can install/update anything in the same prim as the updater script.
