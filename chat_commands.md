@@ -31,7 +31,7 @@ For some commands, a certain level of access(permission) is required. See the [p
 
 	- Command to learn about software servers in your region. 
 	- The option "list" will list the names of the servers in your region.
-	- The option "softwares" will list the server names as well as the software they have inside them, If you specify a name (not minding upper and lower cases) it will only inform you about the software in that server
+	- The option "softwares" will list the server names as well as the software they have inside them. If you specify a sever name (not minding upper and lower cases) it will only inform you about the software in that server
 	
 
 ### Command: software
