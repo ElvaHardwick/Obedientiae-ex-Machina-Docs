@@ -13,7 +13,7 @@ For some commands, a certain level of access(permission) is required. See the [p
 + Usage: release
 + Description: 
 
-	Releases the voice from the controller. If the voice wasn't controlled nothing happens.
+	- Releases the voice from the controller. If the voice wasn't controlled nothing happens.
 
 ### Command: capture
 
@@ -21,7 +21,7 @@ For some commands, a certain level of access(permission) is required. See the [p
 + Usage: capture
 + Description: 
 
-	Captures the voice through the controller. If the voice was already controlled nothing happens.
+	- Captures the voice through the controller. If the voice was already controlled nothing happens.
 
 ### Command: servers
 
@@ -66,6 +66,17 @@ For some commands, a certain level of access(permission) is required. See the [p
 + Description:
 	
 	- Command that will tell you the rules the unit is currecntly subjected to. 
+	
+### Command: menu
++ Permissions required: Menu ( and more depending of the menu you decide to choose )
++ Usage: menu [subsystem]
++ Description:
+	
+	- Command that will open a menu for you. You can specify the particular menu you want to open(in the list provided) or none, to open the main menu.
+	
+
+	
+	
 
 ## Special cases: Commands only for the unit
 
@@ -77,7 +88,7 @@ These are commands only the Controller's wearer can use. They are meant to be us
 + Usage: reset <script>
 + Description: 
 
-	Allows you reset scripts. You can either use the full name or just the part after the "Core_". Upper case and lower case don't affect.
+	- Allows you reset scripts. You can either use the full name or just the part after the "Core_". Upper case and lower case don't affect.
 
 ### Command: safeword
 
@@ -85,4 +96,4 @@ These are commands only the Controller's wearer can use. They are meant to be us
 + Usage: safeword 
 + Description: 
 
-	Safeword. This will give you back ownership of your controller as well as activate self-access. All subsystems will be turned off and the bolts will be unlocked. 
+	- Safeword. This will give you back ownership of your controller as well as activate self-access. All subsystems will be turned off and the bolts will be unlocked. 
