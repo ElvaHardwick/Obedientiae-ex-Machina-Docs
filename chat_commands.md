@@ -44,6 +44,21 @@ For some commands, a certain level of access(permission) is required. See the [p
 	- The option "list "will list the software installed in the controller.
 	- The option "uninstall" will delete the software specified afterwards. The name will be looked for without taking into consideration upper or lower case, or the version.	
 
+### Command: color
+
++ Permissions required: Administration
++ Usage: color <color>
++ Description: 
+
+	- Command to manage the main color of the controller. The color is specified in RGB format, from 0 to 255, separated by commas. If you want to make the controller white, the command would be "color 255,255,255" no spaces between the numbers, only comas.
+
+### Command: nick
+
++ Permissions required: Administration
++ Usage: nick <new name>
++ Description: 
+
+	- Command to manage designation of the unit. The name can contain pretty much any known character, and it can have spaces. The initials to access via chat commands will be updated automatically.
 
 ## Special cases: Commands only for the unit
 
