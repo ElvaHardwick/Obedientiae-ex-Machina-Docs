@@ -60,6 +60,13 @@ For some commands, a certain level of access(permission) is required. See the [p
 
 	- Command to manage designation of the unit. The name can contain pretty much any known character, and it can have spaces. The initials to access via chat commands will be updated automatically.
 
+### Command: rules
++ Permissions required: <to_be_determined>
++ Usage: rules
++ Description:
+	
+	- Command that will tell you the rules the unit is currecntly subjected to. 
+
 ## Special cases: Commands only for the unit
 
 These are commands only the Controller's wearer can use. They are meant to be used only when everything else has failed in fixing the situation.
