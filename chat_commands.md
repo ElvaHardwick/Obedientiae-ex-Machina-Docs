@@ -74,6 +74,13 @@ For some commands, a certain level of access(permission) is required. See the [p
 	
 	- Command that will open a menu for you. You can specify the particular menu you want to open(in the list provided) or none, to open the main menu.
 	
+### Command: follow
++ Permissions required:
++ Usage: follow [distance] 
++ Description:
+	
+	- Command that will make the unit follow you. You can specify the distance at which the unit will follow.
+	
 
 	
 	
