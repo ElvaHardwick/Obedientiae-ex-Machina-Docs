@@ -76,11 +76,18 @@ For some commands, a certain level of access(permission) is required. See the [p
 	
 ### Command: follow
 + Permissions required:
-+ Usage: follow [distance] 
++ Usage: follow [avatar] [distance]
 + Description:
-	
-	- Command that will make the unit follow you. You can specify the distance at which the unit will follow.
-	
+
+	- This commands takes up to two parameters, the first one is the person to follow and the second one is the distance from which to follow. If no parameters are given, the unit will follow the issuer of the command. The person to follow should be as much as you want of their username ( the more characters of their username you give, the more specific it will be). Alternatively, you can use "-stop" to finish the following action.
+
+### Command: follow-dist
++ Permissions required:
++ Usage: follow-dist [distance]
++ Description:
+
+	- This command allows you to specify the distance the unit will follow the target, without specifying a new target. That means that if the unit isn't following anyone, the distance will affect the next time a target is specified. If the unit is following someone already, the distance of following will be changed.
+
 
 	
 	
