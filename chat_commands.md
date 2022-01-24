@@ -17,7 +17,11 @@ Every command has a "usage" section. In this section the document doesn't specif
 
 Everything after the command is called a "Parameter". Parameters can be optional or mandatory. Optional parameters will be enclosed in square brackets []. Mandatory parameters will be enclosed in pointy brackets <>
 
-Sometimes a parameter has some predefined options ( for example the command [servers](#Command:-servers) has two possible options for the first parameter, so they will be separated by a pipe |.
+Sometimes a parameter has some predefined options ( for example the command [servers](#Command:-servers) has two possible options for the first parameter, so they will be separated by a pipe |. To differntiate what's an exact option ( meaning you can't deviate from the listed ones) and the options in which we just give a name to the parameter for clarification, these last ones will be encased in "". This doesn't mean that when issuing the command the parameter must be encased in them.
+
+Finally, in the cases that were just explained, there can be extra paramters that can be added to certain options. To indicate which options they belong to, they will be preceeded by the option(or options) surrounded in curly brackets, and then the proper brackets to indicate if it is a mandatory parameter or not. For example, an optional parameter for the "software" option of the command servers will look like: {software}["server_name"].
+
+We hope this, plus the examples, make the use of these commands clear.
 
 ---
 ## List of available commands
@@ -41,7 +45,7 @@ Sometimes a parameter has some predefined options ( for example the command [ser
 ### Command: servers
 
 + Permissions required: Software
-+ Usage: servers list|software <server_name>
++ Usage: servers <list|software> {software}["server_name"]
 + Description: 
 
 	- Command to learn about software servers in your region. 
@@ -77,7 +81,7 @@ Sometimes a parameter has some predefined options ( for example the command [ser
 ### Command: software
 
 + Permissions required: Software
-+ Usage: software list|uninstall|install <software_name>
++ Usage: software <list|uninstall|install> {uninstall,install}<"software_name">
 + Description: 
 
 	- Command to manage software installed in the controller. 
@@ -104,7 +108,7 @@ Sometimes a parameter has some predefined options ( for example the command [ser
 ### Command: color
 
 + Permissions required: Administration
-+ Usage: color <color>
++ Usage: color <"color">
 + Description: 
 
 	- Command to manage the main color of the controller. The color is specified in RGB format, from 0 to 255, separated by commas. If you want to make the controller white, the command would be "color 255,255,255" no spaces between the numbers, only comas.
@@ -115,7 +119,7 @@ Sometimes a parameter has some predefined options ( for example the command [ser
 ### Command: nick
 
 + Permissions required: Administration
-+ Usage: nick <new name>
++ Usage: nick <"new name">
 + Description: 
 
 	- Command to manage designation of the unit. The name can contain pretty much any known character, and it can have spaces. The initials to access via chat commands will be updated automatically.
@@ -132,21 +136,21 @@ Sometimes a parameter has some predefined options ( for example the command [ser
 	
 ### Command: menu
 + Permissions required: Menu ( and more depending of the menu you decide to choose )
-+ Usage: menu [subsystem]
++ Usage: menu [subsystems|administration|follow|IO menu|Power|Programming|Devices]
 + Description:
 	
 	- Command that will open a menu for you. You can specify the particular menu you want to open(in the list provided) or none, to open the main menu.
 	
 ### Command: follow
 + Permissions required:
-+ Usage: follow [avatar] [distance]
++ Usage: follow ["avatar"] ["distance"]
 + Description:
 
 	- This commands takes up to two parameters, the first one is the person to follow and the second one is the distance from which to follow. If no parameters are given, the unit will follow the issuer of the command. The person to follow should be as much as you want of their username ( the more characters of their username you give, the more specific it will be). Alternatively, you can use "-stop" to finish the following action.
 
 ### Command: follow-dist
 + Permissions required:
-+ Usage: follow-dist [distance]
++ Usage: follow-dist ["distance"]
 + Description:
 
 	- This command allows you to specify the distance the unit will follow the target, without specifying a new target. That means that if the unit isn't following anyone, the distance will affect the next time a target is specified. If the unit is following someone already, the distance of following will be changed.
@@ -162,7 +166,7 @@ These are commands only the Controller's wearer can use. They are meant to be us
 ### Command: reset
 
 + Permissions required: NONE
-+ Usage: reset <script>
++ Usage: reset <"script">
 + Description: 
 
 	- Allows you reset scripts. You can either use the full name or just the part after the "Core_". Upper case and lower case don't affect.
