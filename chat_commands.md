@@ -79,6 +79,9 @@ For some commands, a certain level of access(permission) is required. See the [p
 
 	- Command to manage the main color of the controller. The color is specified in RGB format, from 0 to 255, separated by commas. If you want to make the controller white, the command would be "color 255,255,255" no spaces between the numbers, only comas.
 
++ Examples:
+    - To change the color to red: **@color 255,0,0**
+
 ### Command: nick
 
 + Permissions required: Administration
