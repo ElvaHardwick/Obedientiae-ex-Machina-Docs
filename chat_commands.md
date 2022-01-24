@@ -1,12 +1,25 @@
 # Chat commands for OeM controllers.
 
-Chat commands can be introduced both in channel 0 ( local chat ) or channel 1 by introducing the first two characters of the unit's identification, without distinguishig between lower or uppercases. 
+Chat commands can be introduced channel 1 by introducing the first two characters of the unit's identification, without distinguishig between lower or uppercases.
+
 For example, to send a command to a unit whose name is L-Research-Unit, you'd have to use "l-command", for a unit named 632-78-123, yould have to use "63command", etc.
 
 **IMPORTANT** If a unit has their serial number as their name, instead the first to letters of their username will be used (gonkaotic resident -> go )
 
+A unit can issue commands to itself if their voice is being processed by the controller by simply staring the line with @, as shown in the examples.
+
 For some commands, a certain level of access(permission) is required. See the [permissions](./index#Manage-Roles) for more information
 
+---
+## A note on format
+
+Every command has a "usage" section. In this section the document doesn't specify the prefix used but it should always have one (check above to see what it should be depending on the case).
+
+Everything after the command is called a "Parameter". Parameters can be optional or mandatory. Optional parameters will be enclosed in square brackets []. Mandatory parameters will be enclosed in pointy brackets <>
+
+Sometimes a parameter has some predefined options ( for example the command [servers](#Command:-servers) has two possible options for the first parameter, so they will be separated by a pipe |.
+
+---
 ## List of available commands
 	
 ### Command: release
