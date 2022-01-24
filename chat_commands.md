@@ -17,7 +17,7 @@ Every command has a "usage" section. In this section the document doesn't specif
 
 Everything after the command is called a "Parameter". Parameters can be optional or mandatory. Optional parameters will be enclosed in square brackets []. Mandatory parameters will be enclosed in pointy brackets <>
 
-Sometimes a parameter has some predefined options ( for example the command [servers](#Command:-servers) has two possible options for the first parameter, so they will be separated by a pipe |. To differntiate what's an exact option ( meaning you can't deviate from the listed ones) and the options in which we just give a name to the parameter for clarification, these last ones will be encased in "". This doesn't mean that when issuing the command the parameter must be encased in them.
+Sometimes a parameter has some predefined options ( for example the command [servers](#Command:-servers) has two possible options for the first parameter, so they will be separated by a pipe \|. To differentiate what's an exact option ( meaning you can't deviate from the listed ones) and the options in which we just give a name to the parameter for clarification, these last ones will be encased in "". This doesn't mean that when issuing the command the parameter must be encased in them.
 
 Finally, in the cases that were just explained, there can be extra paramters that can be added to certain options. To indicate which options they belong to, they will be preceeded by the option(or options) surrounded in curly brackets, and then the proper brackets to indicate if it is a mandatory parameter or not. For example, an optional parameter for the "software" option of the command servers will look like: {software}["server_name"].
 
@@ -45,7 +45,7 @@ We hope this, plus the examples, make the use of these commands clear.
 ### Command: servers
 
 + Permissions required: Software
-+ Usage: servers <list|software> {software}["server_name"]
++ Usage: servers <list \| software> {software}["server_name"]
 + Description: 
 
 	- Command to learn about software servers in your region. 
@@ -177,4 +177,4 @@ These are commands only the Controller's wearer can use. They are meant to be us
 + Usage: safeword 
 + Description: 
 
-	- Safeword. This will give you back ownership of your controller as well as activate self-access. All subsystems will be turned off and the bolts will be unlocked. 
+	- Safeword. This will give you back ownership of your controller as well as activate self-access. All subsystems will be turned off and the bolts will be unlocked.
