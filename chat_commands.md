@@ -107,6 +107,9 @@ For some commands, a certain level of access(permission) is required. See the [p
 
 	- Command to manage designation of the unit. The name can contain pretty much any known character, and it can have spaces. The initials to access via chat commands will be updated automatically.
 
++ Examples:
+    - To change the unit's designation to "L-Research-Unit 375": **@nick L-Research-Unit 375**
+
 ### Command: rules
 + Permissions required: <to_be_determined>
 + Usage: rules
