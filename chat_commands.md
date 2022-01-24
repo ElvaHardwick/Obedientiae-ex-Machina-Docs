@@ -3,6 +3,8 @@
 Chat commands can be introduced both in channel 0 ( local chat ) or channel 1 by introducing the first two characters of the unit's identification, without distinguishig between lower or uppercases. 
 For example, to send a command to a unit whose name is L-Research-Unit, you'd have to use "l-command", for a unit named 632-78-123, yould have to use "63command", etc.
 
+**IMPORTANT** If a unit has their serial number as their name, instead the first to letters of their username will be used (gonkaotic resident -> go )
+
 For some commands, a certain level of access(permission) is required. See the [permissions](./index#Manage-Roles) for more information
 
 ## List of available commands
@@ -26,13 +28,38 @@ For some commands, a certain level of access(permission) is required. See the [p
 ### Command: servers
 
 + Permissions required: Software
-+ Usage: servers list|softwares <server_name>
++ Usage: servers list|software <server_name>
 + Description: 
 
 	- Command to learn about software servers in your region. 
 	- The option "list" will list the names of the servers in your region.
-	- The option "softwares" will list the server names as well as the software they have inside them. If you specify a sever name (not minding upper and lower cases) it will only inform you about the software in that server
-	
+	- The option "software" will list the server names as well as the software they have inside them. If you specify a sever name (not minding upper and lower cases) it will only inform you about the software in that server
+
++ Examples:
+    - To list the servers available: **@servers list**
+
+        It will returns something like:
+    >       Available servers:
+    >           OeM_Beta
+    >           OeM_Employees
+    - To list the softwares in the available servers: **@servers software**
+
+        It will return something like:
+    >        Available softwares per server:
+    >           Server "OeM_Beta" offers:
+    >                - OeMCore_1.1
+    >                - OeMCore_1.0
+    >            Server "OeM_Employees" offers:
+    >                - ESU-programming
+    >                - DSU-programming
+    - To list the softwares in a specific servers(in this case OeM_Beta): **@servers software OeM_Beta**
+
+        It will return something like:
+    >        Available softwares per server:
+    >            Server "OeM_Beta" offers:
+    >                - OeMCore_1.1
+    >                - OeMCore_1.0
+
 
 ### Command: software
 
