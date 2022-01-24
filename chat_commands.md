@@ -64,12 +64,29 @@ For some commands, a certain level of access(permission) is required. See the [p
 ### Command: software
 
 + Permissions required: Software
-+ Usage: software list|uninstall <software_name>
++ Usage: software list|uninstall|install <software_name>
 + Description: 
 
 	- Command to manage software installed in the controller. 
 	- The option "list "will list the software installed in the controller.
-	- The option "uninstall" will delete the software specified afterwards. The name will be looked for without taking into consideration upper or lower case, or the version.	
+	- The option "uninstall" will delete the software specified afterwards. The name will be looked for without taking into consideration upper or lower case, or the version
+	- **IMPORTANT** WIP, not implemented yet. ~~The option "install" will install software from a nearby server.~~
+
++ Examples:
+    - To list installed softwares: **@software list**
+
+        It will returns something like:
+        >   Installed Software:
+               OeMCore_1.0
+               DefaultConfig_1.0
+    - To uninstall a software: **@software uninstall DefaultConfig_1.0**
+
+        It will returns something like:
+        > Finished uninstalling -DefaultConfig_1.0
+
+    - To install a software offered by a nerby server (see [Command: servers](#Command:-servers)): **@software install ESU-programming**
+
+        **IMPORTANT** WIP, not implemented yet.
 
 ### Command: color
 
