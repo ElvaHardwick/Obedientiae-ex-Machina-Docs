@@ -136,7 +136,7 @@ We hope this, plus the examples, make the use of these commands clear.
 	
 ### Command: menu
 + Permissions required: Menu ( and more depending of the menu you decide to choose )
-+ Usage: menu [subsystems<code>&#124;</code>administration<code>&#124;</code>follow<code>&#124;</code>IO menu<code>&#124;</code>Power<code>&#124;</code>Programming<code>&#124;</code>Devices]
++ Usage: menu [subsystems<code>&#124;</code>admin<code>&#124;</code>follow<code>&#124;</code>IO<code>&#124;</code>power<code>&#124;</code>programming<code>&#124;</code>devices]
 + Description:
 	
 	- Command that will open a menu for you. You can specify the particular menu you want to open(in the list provided) or none, to open the main menu.
