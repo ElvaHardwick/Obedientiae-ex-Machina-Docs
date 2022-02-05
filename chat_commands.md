@@ -178,3 +178,11 @@ These are commands only the Controller's wearer can use. They are meant to be us
 + Description: 
 
 	- Safeword. This will give you back ownership of your controller as well as activate self-access. All subsystems will be turned off and the bolts will be unlocked.
+
+### Command: hud_text
+
++ Permissions required: NONE
++ Usage: hud_text < name <code>&#124;</code> rules <code>&#124;</code> both > < height >
++ Description:
+
+	- Safeword. This will give you back ownership of your controller as well as activate self-access. All subsystems will be turned off and the bolts will be unlocked.
