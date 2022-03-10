@@ -158,10 +158,48 @@ We hope this, plus the examples, make the use of these commands clear.
 
 ### Command: power
 + Permissions required: Toggle power
-+ Usage: power [on | off | reboot]
++ Usage: power <on<code>&#124;</code>off<code>&#124;</code>reboot>
 + Description:
 
 	- This command allows you turns the unit on, off or reboots it. Each work only if the unit is in a state in which it can work. Turning a unit on when it already is doesn't make sense. If a unit is changing between states it won't work either.
+
+
+### Command: initials
++ Permissions required: Administration
++ Usage: initials <"2 characters">
++ Description:
+
+	- This command will let you change the intials used to issue more chat commands. If a string of more than 2 characters is used, only the first two characters will be taken. Please, ensure you remember the intials as of right now there is no way to reset it unless the unit is allowed administrative access to itself and uses the command ( using @initials )
+
+### Command: relay
++ Permissions required: none
++ Usage: relay <"msg">
++ Description:
+
+	- This command will relay, anonymously, the message to the unit ( as if it were a message from the controller ).
+
+### Command: announce
++ Permissions required: none
++ Usage: announce <"msg">
++ Description:
+
+	- This command will make the unit say the message in local chat. This will surpass mind restrictions, but not volume restrictiosn. As of right now it can only be normal chat, not whisper(unless that's the only volume level the unit can get) nor shout.
+
+### Command: sit
++ Permissions required: none
++ Usage: sit <"object name">
++ Description:
+
+	- This command will force sit the unit into an object (no farther than 10 m) that starts with the same letters as the given parameter.
+
+### Command: stand
++ Permissions required: none
++ Usage: stand
++ Description:
+
+	- This command will force the unit to stand.
+
+
 	
 
 ## Special cases: Commands only for the unit
