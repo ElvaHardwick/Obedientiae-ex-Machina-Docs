@@ -17,9 +17,9 @@ Every command has a "usage" section. In this section the document doesn't specif
 
 Everything after the command is called a "Parameter". Parameters can be optional or mandatory. Optional parameters will be enclosed in square brackets []. Mandatory parameters will be enclosed in pointy brackets <>
 
-Sometimes a parameter has some predefined options ( for example the command [servers](#Command:-servers) has two possible options for the first parameter, so they will be separated by a pipe <code>&#124;</code>. To differentiate what's an exact option ( meaning you can't deviate from the listed ones) and the options in which we just give a name to the parameter for clarification, these last ones will be encased in "". This doesn't mean that when issuing the command the parameter must be encased in them.
+Sometimes a parameter has some predefined options ( for example the command [servers](#Command:-servers) has two possible options for the first parameter) so they will be separated by a pipe <code>&#124;</code>. To differentiate what's an exact option ( meaning you can't deviate from the listed ones) and the options in which we just give a name to the parameter for clarification, these last ones will be encased in "". This doesn't mean that when issuing the command the parameter must be encased in them.
 
-Finally, in the cases that were just explained, there can be extra paramters that can be added to certain options. To indicate which options they belong to, they will be preceeded by the option(or options) surrounded in curly brackets, and then the proper brackets to indicate if it is a mandatory parameter or not. For example, an optional parameter for the "software" option of the command servers will look like: {software}["server_name"].
+Finally, in the cases that were just explained, there can be extra parameters that can be added to certain options. To indicate which options they belong to, they will be preceeded by the option(or options) surrounded in curly brackets, and then the proper brackets to indicate if it is a mandatory parameter or not. For example, an optional parameter for the "software" option of the command servers will look like: {software}["server_name"].
 
 We hope this, plus the examples, make the use of these commands clear.
 
@@ -132,7 +132,7 @@ We hope this, plus the examples, make the use of these commands clear.
 + Usage: rules
 + Description:
 	
-	- Command that will tell you the rules the unit is currecntly subjected to. 
+	- Command that will tell you the rules the unit is currently subjected to.
 	
 ### Command: menu
 + Permissions required: Menu ( and more depending of the menu you decide to choose )
@@ -156,7 +156,12 @@ We hope this, plus the examples, make the use of these commands clear.
 	- This command allows you to specify the distance the unit will follow the target, without specifying a new target. That means that if the unit isn't following anyone, the distance will affect the next time a target is specified. If the unit is following someone already, the distance of following will be changed.
 
 
-	
+### Command: power
++ Permissions required: Toggle power
++ Usage: power [on | off | reboot]
++ Description:
+
+	- This command allows you turns the unit on, off or reboots it. Each work only if the unit is in a state in which it can work. Turning a unit on when it already is doesn't make sense. If a unit is changing between states it won't work either.
 	
 
 ## Special cases: Commands only for the unit
