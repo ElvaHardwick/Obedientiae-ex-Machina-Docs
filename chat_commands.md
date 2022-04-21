@@ -142,14 +142,14 @@ We hope this, plus the examples, make the use of these commands clear.
 	- Command that will open a menu for you. You can specify the particular menu you want to open(in the list provided) or none, to open the main menu.
 	
 ### Command: follow
-+ Permissions required:
++ Permissions required: follow
 + Usage: follow ["avatar"] ["distance"]
 + Description:
 
 	- This commands takes up to two parameters, the first one is the person to follow and the second one is the distance from which to follow. If no parameters are given, the unit will follow the issuer of the command. The person to follow should be as much as you want of their username ( the more characters of their username you give, the more specific it will be). Alternatively, you can use "-stop" to finish the following action.
 
 ### Command: follow-dist
-+ Permissions required:
++ Permissions required: follow
 + Usage: follow-dist ["distance"]
 + Description:
 
@@ -172,28 +172,33 @@ We hope this, plus the examples, make the use of these commands clear.
 	- This command will let you change the intials used to issue more chat commands. If a string of more than 2 characters is used, only the first two characters will be taken. Please, ensure you remember the intials as of right now there is no way to reset it unless the unit is allowed administrative access to itself and uses the command ( using @initials )
 
 ### Command: relay
-+ Permissions required: none
++ Permissions required: Menu
 + Usage: relay <"msg">
 + Description:
 
 	- This command will relay, anonymously, the message to the unit ( as if it were a message from the controller ).
 
-### Command: announce
-+ Permissions required: none
-+ Usage: announce <"msg">
+### Command: say
++ Permissions required: Menu
++ Usage: say [ -s <code>&#124;</code> -w] <"msg">
 + Description:
 
-	- This command will make the unit say the message in local chat. This will surpass mind restrictions, but not volume restrictiosn. As of right now it can only be normal chat, not whisper(unless that's the only volume level the unit can get) nor shout.
+	- Outputs the message through the unit, unless the volume is off. The -w option makes the unit whisper. The -s option makes the unit shout. This command can't be used by the unit as it overrides the mind subsystem being off.
+
++ Examples:
+    - To make a unit (with the initials go) say "I am a robot": /1 gosay I am a robot
+    - To make a unit (with the initials go) whisper "I am groot": /1 gosay -w I am groot
+    - To make a unit (with the initials go) shout "My name is Iñigo Montoya": /1 gosay -s My name is Iñigo Montoya
 
 ### Command: sit
-+ Permissions required: none
++ Permissions required: subsystems
 + Usage: sit <"object name">
 + Description:
 
 	- This command will force sit the unit into an object (no farther than 10 m) that starts with the same letters as the given parameter.
 
 ### Command: stand
-+ Permissions required: none
++ Permissions required: subsystems
 + Usage: stand
 + Description:
 
@@ -228,4 +233,4 @@ These are commands only the Controller's wearer can use. They are meant to be us
 + Usage: hud_text < name <code>&#124;</code> rules <code>&#124;</code> both > < height >
 + Description:
 
-	- Safeword. This will give you back ownership of your controller as well as activate self-access. All subsystems will be turned off and the bolts will be unlocked.
+	- This command is used to modify the height of the text shown in the hud. It takes two mandatory parameters. The first is which text to move and the second is the ammount to move it by. The ammount is divided by 10 so an input of 1 will move the text 0.1 meters up. The name accepts three options: "name", "rules" and "both".
