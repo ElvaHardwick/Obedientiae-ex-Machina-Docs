@@ -178,6 +178,7 @@ We hope this, plus the examples, make the use of these commands clear.
 
 	- This command will relay, anonymously, the message to the unit ( as if it were a message from the controller ).
 
+
 ### Command: say
 + Permissions required: Menu
 + Usage: say [ -s <code>&#124;</code> -w] <"msg">
@@ -202,7 +203,7 @@ We hope this, plus the examples, make the use of these commands clear.
 + Usage: stand
 + Description:
 
-	- This command will force the unit to stand.
+	- This command will force the unit to stand. Please note that if the unit is prevented from standing, this command will fail silently.
 
 
 	
@@ -234,3 +235,4 @@ These are commands only the Controller's wearer can use. They are meant to be us
 + Description:
 
 	- This command is used to modify the height of the text shown in the hud. It takes two mandatory parameters. The first is which text to move and the second is the ammount to move it by. The ammount is divided by 10 so an input of 1 will move the text 0.1 meters up. The name accepts three options: "name", "rules" and "both".
+
