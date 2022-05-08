@@ -205,6 +205,17 @@ We hope this, plus the examples, make the use of these commands clear.
 
 	- This command will force the unit to stand. Please note that if the unit is prevented from standing, this command will fail silently.
 
+### Command: subsystem
++ Permissions required: subsystems
++ Usage: subsystem < "subsystem_name" <code>&#124;</code> status > [new_state]
++ Description:
+
+	- With this command you can check the status of a subsystem by adding its name as the second parameter. You can check all subsystems by using the keyword `status` as the second parameter. If you add a third parameter, you can also modify it as if you were on the subsystems menu. The available subsystem names are `mind`, `video`, `audio`, `speech`, `mind`, `volume`, `video`, `teleport`, `movement`, `jetpack`, `radar`, `startcomms`, `email`, `facial`, `geolocation`, `comms`. The third parameter can be either the keywords `on` and `off` or the numbers `1` and `0` respectively. For the special subsystmes, with more than two states, more keywords are provided:
+
+	* `volume`: `mute`, `low`, `normal`, `full` **Note: For volume, on and off keywords don't work currently
+	* `telport`: besides `on` and `off`, `ctrl`
+	* `comms`: `full`, `in`, `out`, `neither` **Note: For comms, on and off keywords don't work currently
+	* `movement`: `none`, `ctrl`, `slow`, `full`
 
 	
 
