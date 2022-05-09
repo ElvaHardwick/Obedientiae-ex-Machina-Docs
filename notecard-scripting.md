@@ -32,9 +32,9 @@ There are a few code 'blocks' that are available, see the [examples section](#ex
  * `think` - Causes a thought to appear in the unit's head, this can be a notification or an impulse the unit feels compelled to do.
  * `say` - Causes the unit to say something, this is restricted by restrictions on the unit's speech.
  * `wait` - Causes the rest of the block it is in to be scheduled for the specified amount of seconds later, the evaluation of other notecards immediately continues, so if you have two blocks with `wait 2`, followed by a `say` the messages will be said at roughly the same time.
- * `subsystem` - Followed by the subsystem and the state, it allows to change the status of the subsystems. For most subsystems `on` and `off` status will work. The available subsystems are: `bolts`, `speech`, `mind`, `volume`, `video`, `audio`, `teleport`, `motors`, `fly`, `geolocation`, `recognition`, `radar`, `notecard`, `comms`, `start_comms`. For those subsystems that have special levels ( not just on or off ) extra keywords are available as follows:
+ * `subsystem` - Followed by the subsystem and the state, it allows to change the status of the subsystems. For most subsystems `on` and `off` status will work. The available subsystems are: `bolts`, `speech`, `mind`, `volume`, `video`, `audio`, `teleport`, `motors`, `jetpack`, `geolocation`, `facial`, `radar`, `email`, `comms`, `startcomms`. For those subsystems that have special levels ( not just on or off ) extra keywords are available as follows:
     + `bolts`: `powered` sets the bolt to lock only if the unit is on
-    + `volume`: `loud` is equivalent of `on`; `low` will make the unit only whisper; `normal` will prevent the unit from shouting;
+    + `volume`: `loud` is equivalent of `on`; `low` will make the unit only whisper; `normal` will prevent the unit from shouting;`mute` is equivalent to `off`
     + `teleport`: `block` will prevent The unit from teleporting, but others can teleport it
     + `motors`: `fast` is equivalent of `on`; `block` takes away the control from the unit, but if there are external commands to move ( such as follow) the unit motors will answer to them; `slow` will prevent the unit from running
     + `comms`: `RX` prevents the unit only from receiving IMs; `TX` prevents the unit only from sending IMs;
