@@ -217,7 +217,12 @@ We hope this, plus the examples, make the use of these commands clear.
 	* `comms`: besides `on` and `off`; `RX` will prevent the unit just from receiving IMs; `TX` will prevent the unit just from sending IMs;
 	* `movement`: `none` is equivalent of `off`; `block` will prevent the unit from moving without an order such as follow; `slow` prevents from running; `fast` is equivalent of `on`
 
-	
+### Command: bolts
++ Permissions required: Administration
++ Usage: bolts < on <code>&#124;</code> off <code>&#124;</code> powered>
++ Description:
+
+	- This command will change the status of the bolts un the unit as if it were done through the menu.
 
 ## Special cases: Commands only for the unit
 
