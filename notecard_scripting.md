@@ -150,8 +150,7 @@ end
 {% endhighlight %}
 
 ### RLV
-#<a name="Example-RLV"></a>
-An extensible example to automatically equip/unequip items when the obedience level switches. Assumes RLV folders `#RLV/~oem/obedience/all`, `#RLV/~oem/obedience/obedience` and `#RLV/~oem/obedience/default` are set up with links to items.
+<a name="Example-RLV"></a>An extensible example to automatically equip/unequip items when the obedience level switches. Assumes RLV folders `#RLV/~oem/obedience/all`, `#RLV/~oem/obedience/obedience` and `#RLV/~oem/obedience/default` are set up with links to items.
 The idea being that `all` will always be unattached, and then either `default` or `obedience` is equipped afterwards.
 
 {% highlight javascript %}

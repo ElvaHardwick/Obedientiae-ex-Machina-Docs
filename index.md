@@ -1,4 +1,4 @@
-## Welcome to Obedientia ex Machina
+# Welcome to Obedientia ex Machina
 
 Obedientia ex Machina is a new system for all your robot RP and Control needs in Second Life.
 We are located at the Synthetic Union and you can find us at [this location](http://maps.secondlife.com/secondlife/GEL%20Community%2042/167/178/62).
