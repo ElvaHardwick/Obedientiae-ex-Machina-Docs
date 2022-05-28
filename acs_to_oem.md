@@ -78,7 +78,7 @@ function convert_code() {
     function(n) {
       var ret = `when ${n[1]} = "${n[2]}"\n`;
       if ( in_block ) dec_block();
-      
+
       in_block++;
       in_rule = 1;
       return ret;

@@ -8,7 +8,7 @@ For example, to send a command to a unit whose name is L-Research-Unit, you'd ha
 
 A unit can issue commands to itself if their voice is being processed by the controller by simply staring the line with @, as shown in the examples.
 
-For some commands, a certain level of access(permission) is required. See the [permissions](./index#Manage-Roles) for more information
+For some commands, a certain level of access(permission) is required. See the [permissions](./menu-system#Manage-Roles) for more information
 
 ---
 ## A note on format
@@ -30,7 +30,7 @@ We hope this, plus the examples, make the use of these commands clear.
 
 + Permissions required: Menu
 + Usage: release
-+ Description: 
++ Description:
 
 	- Releases the voice from the controller. If the voice wasn't controlled nothing happens.
 
@@ -38,7 +38,7 @@ We hope this, plus the examples, make the use of these commands clear.
 
 + Permissions required: Menu
 + Usage: capture
-+ Description: 
++ Description:
 
 	- Captures the voice through the controller. If the voice was already controlled nothing happens.
 
@@ -46,9 +46,9 @@ We hope this, plus the examples, make the use of these commands clear.
 
 + Permissions required: Software
 + Usage: servers <list <code>&#124;</code> software> {software}["server_name"]
-+ Description: 
++ Description:
 
-	- Command to learn about software servers in your region. 
+	- Command to learn about software servers in your region.
 	- The option "list" will list the names of the servers in your region.
 	- The option "software" will list the server names as well as the software they have inside them. If you specify a sever name (not minding upper and lower cases) it will only inform you about the software in that server
 
@@ -82,9 +82,9 @@ We hope this, plus the examples, make the use of these commands clear.
 
 + Permissions required: Software
 + Usage: software <list<code>&#124;</code>uninstall<code>&#124;</code>install> {uninstall,install}<"software_name">
-+ Description: 
++ Description:
 
-	- Command to manage software installed in the controller. 
+	- Command to manage software installed in the controller.
 	- The option "list "will list the software installed in the controller.
 	- The option "uninstall" will delete the software specified afterwards. The name will be looked for without taking into consideration upper or lower case, or the version
 	- **IMPORTANT** WIP, not implemented yet. ~~The option "install" will install software from a nearby server.~~
@@ -109,7 +109,7 @@ We hope this, plus the examples, make the use of these commands clear.
 
 + Permissions required: Administration
 + Usage: color <"color">
-+ Description: 
++ Description:
 
 	- Command to manage the main color of the controller. The color is specified in RGB format, from 0 to 255, separated by commas. If you want to make the controller white, the command would be "color 255,255,255" no spaces between the numbers, only comas.
 
@@ -120,7 +120,7 @@ We hope this, plus the examples, make the use of these commands clear.
 
 + Permissions required: Administration
 + Usage: nick <"new name">
-+ Description: 
++ Description:
 
 	- Command to manage designation of the unit. The name can contain pretty much any known character, and it can have spaces. The initials to access via chat commands will be updated automatically.
 
@@ -232,15 +232,15 @@ These are commands only the Controller's wearer can use. They are meant to be us
 
 + Permissions required: NONE
 + Usage: reset <"script">
-+ Description: 
++ Description:
 
 	- Allows you reset scripts. You can either use the full name or just the part after the "Core_". Upper case and lower case don't affect.
 
 ### Command: safeword
 
 + Permissions required: NONE
-+ Usage: safeword 
-+ Description: 
++ Usage: safeword
++ Description:
 
 	- Safeword. This will give you back ownership of your controller as well as activate self-access. All subsystems will be turned off and the bolts will be unlocked.
 
