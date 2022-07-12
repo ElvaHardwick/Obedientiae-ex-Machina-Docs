@@ -180,14 +180,48 @@ And a complex one with more than one output filter in the script:
 This linked message is used when the controller has to ouput some text. The structure is simple: the string contains the message to be outputted while the key contains the output mode. There are several output modes, each one having their own reason to exist.
 
 1. OEM_WHISPER, OEM_SHOUT, OEM_NORMAL: These modes will output the text as if it was written by the unit. This means that if the unit has their mind or volume off, these won't work.
-2. OEM_THINK: Will relay the message ONLY to the unit, in the same way the chat command "relay" does.
+2. OEM_THINK: Will relay the message ONLY to the unit, in the same way the chat command "relay" does. RLV commands won't be relayed.
 3. OEM_ANNOUNCE, OEM_ANNOUNCE_S, OEM_ANNOUNCE_W: Will act as if it was a message NOT produced by the mind of the unit, and thus will ignore the mind subsystem being off. S is for shout, W for whisper.
 
 
 ### Restrictions
+
+The controller allows us to apply and remove restrictions from the unit. It is not a RLV relay, it has a limited number of restrictions it applies, identified with numbers. These numbers are powers of 2, so that they can all be used as flags inside an integer.
+
+The controller keeps track of "who" has issued which restrictions and won't lift them until everyone has released them. That means that the subsystem menu and the power management both have motor speed restricted. then the subsystem menu lifts its restriction. The controller won't lift the restriction because the power management still has theirs issued.
+
+Just a small note, to make everyone's life simpler. Bitwise logic operators. To add a new flag -> flags = flags | new_flag. To remove a flag -> flags = flags & ~new_flag.
+
 #### RESTRICTION\_APPLY                 600
+
+This linked message is used to apply restrictions on the unit. The string must be a number that contains the flags for the restrictions that you want to apply. In the key you must use your identifier. This should be a short string (we want to save memory) but asunique as you can. The device will add the restriction to the restrictions you have applied and if that restriction hadn't been applied yet, the system will issue the RLV command.
+
+    SEND_LINKED_MESSAGE( MESSAGEID_RESTRICTION_APPLY, ([RESTRICTION_SPEECH]), "Core_IO_Menu" );
+
 #### RESTRICTION\_RELEASE               601
-#### RESTRICTION\_RELEASE\_ALL 	    602
+
+The opposite of apply, you have to send an integer with the restrictions flags you want to lift and your identifier as the key. The system will remove these flags from the restrictions you have applied and if nobody else has those restrictions applied, then it will issue the RLV command to lift them.
+
+#### RESTRICTION\_RELEASE\_ALL 	        602
+
+Will release all the restrictions that have the identifier sent in the key. The rest works like RESTRICTION_RELEASE
+
+#### RESTRICTION\_SAFEWORD   		    603
+
+Will release ALL the restrictions, no matter what the origin was for. If you receive this linked message, you can assume your restrictions have been forgotten by the system.
+
+#### RESTRICTION\_UPDATE	 	        604
+
+This is a linked message that is sent after any of the previous messages has been received. The string of this Linked Message contains the previous collective flags status and the new one, separated as a list.. This message is sent even if there has been no change.
+
+#### RESTRICTION\_REQUEST_STATUS 	    606
+
+Linked message to request the current collective flag status.
+
+#### RESTRICTION\_STATUS 		        607
+
+Anser to the previous linked message, containing only the current overall flag status.
+
 
 ### Menus
 #### OPEN\_MENU 11
