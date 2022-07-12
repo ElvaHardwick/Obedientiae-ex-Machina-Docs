@@ -177,6 +177,12 @@ And a complex one with more than one output filter in the script:
 
 ### Think/Say/Stuff
 #### OUTPUT\_VOICE                      705
+This linked message is used when the controller has to ouput some text. The structure is simple: the string contains the message to be outputted while the key contains the output mode. There are several output modes, each one having their own reason to exist.
+
+1. OEM_WHISPER, OEM_SHOUT, OEM_NORMAL: These modes will output the text as if it was written by the unit. This means that if the unit has their mind or volume off, these won't work.
+2. OEM_THINK: Will relay the message ONLY to the unit, in the same way the chat command "relay" does.
+3. OEM_ANNOUNCE, OEM_ANNOUNCE_S, OEM_ANNOUNCE_W: Will act as if it was a message NOT produced by the mind of the unit, and thus will ignore the mind subsystem being off. S is for shout, W for whisper.
+
 
 ### Restrictions
 #### RESTRICTION\_APPLY                 600
