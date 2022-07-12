@@ -13,20 +13,20 @@
 #### MESSAGEID\_PROCESS\_IMPL\_COMMAND			1608
 
 ### Filters
-#### MESSAGEID\_FILTER\_REGISTER			700
+#### FILTER\_REGISTER			700
 
 This is a message that should be sent right after any script with a filter in it is installed. Send a linked message with this number and the name of the filter(s) separated by the character 0xE010 as the string. The key should be the name of your script.
 
     llMessageLinked ( LINK_SET, 700, llDumpList2String( gFilters, llChar( 0xE010 ) ) ,  llGetScriptName());
 
-#### MESSAGEID\_FILTER\_UNREGISTER			701
+#### FILTER\_UNREGISTER			701
 
 This is the linked message that HAS to be sent before any script with a filter in it is uninstalled. You'll be informed of that via another linked message TODO: LINKED MESSSAGE NAME. Similar to MESSAGEID_FILTER_REGISTER, the string is the name of the filters separated by the character 0xE010 as the string and the key should be the name of your script.
 
     llMessageLinked ( LINK_SET, 701, llDumpList2String( gFilters, llChar( 0xE010 ) ) ,  llGetScriptName());
 
 
-#### MESSAGEID\_FILTER\_NEXT\_FILTER        702
+#### FILTER\_NEXT\_FILTER        702
 This linked message is used to set up the pipeline of filters through which the unit's speech or the unit's hearing will go through. The key sent with the linked message is the filter name this linked message is targeting. The string sent in the linked message is the name of the filter that goes after. It's possible that this name is an empty string, but it's not a special case you should handle. You should default this value to an empty string when in doubt.
 
 This message id serves for both input filters and output filters.
@@ -50,7 +50,7 @@ Here is an example for a filter that is inside a script with multiple filters in
         }
     }
 
-#### MESSAGEID\_FILTER\_OUTPUT   			703
+#### FILTER\_OUTPUT   			703
 
 This linked message serves to send the unit's speech through the filter pipeline. You have to check if the key of the linked message is the name of one of your filters and if it is, process the speech stored in the linked message string. Once you are finished make sure to pass it on with this same message id to the next filter, which you have received with MESSAGEID_FILTER_NEXT_FILTER.
 
@@ -115,7 +115,7 @@ And here is a more complex example with more filters in one script.
     }
 
 
-#### MESSAGEID\_FILTER\_INPUT				704
+#### FILTER\_INPUT				704
 
 Same as FILTER_OUTFUT, but instead of filtering the unit's speech, you are filtering what it hears. Due to this change there is a slight difference. The message is divided into two lists. The first one is separated by the character 0xE010 and it contains, in order, the uuid of the speaker, the name of the speaker and finally what was said. This last element is also a list, separated by the 0xE011 character. This second list is the same as the one you could find in the previous linked message FILTER_INPUT.
 
@@ -187,6 +187,7 @@ This linked message is used when the controller has to ouput some text. The stru
 ### Restrictions
 #### RESTRICTION\_APPLY                 600
 #### RESTRICTION\_RELEASE               601
+#### RESTRICTION\_RELEASE\_ALL 	    602
 
 ### Menus
 #### OPEN\_MENU 11
