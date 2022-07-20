@@ -1,7 +1,21 @@
+### Table of Contents
+
+ * [Subsystems Menu](#subsystems-menu)
+ * [IO Menu](#io-menu)
+ * [Administration](#administration)
+ * [Power](#power)
+ * [Status](#status)
+ * [Applications](#applications)
+ * [Follow](#follow)
+ * [Programming](#programming)
+ * [Devices](#devices)
+
+
 # Main Menu
 
 This is the menu that opens up when the  controller is first accessed
 
+<div class="top-marker"><a href="#a-title">Top</a></div>
 ## Subsystems Menu
 
 Menu that controls the unit's subsystems through RLV. If the tick(✔) is next to the subsystem it means it is currently allowed, an ❌ means it is restricted.
@@ -22,8 +36,8 @@ Allows/denies the unit to recognize those around them ( see their names and  nam
 Allows/denies the unit to see their current position in world ( blocks map and location )
 
 ### Mind
-Allows/denies the unit to chat. Currently similar to setting the volume to mute, but in the future it will have more uses **TODO**
-one of it's uses is that the unit can't control the speakers in them, but other external commands might be able to. ((should probably be a fifth level volume...?))
+Allows/denies the unit the abillity to freely chat. Instead all it can say are pre-recorded phrases from the notecard system.
+one of it's uses is that the unit can't control the speakers in them, but other external commands might be able to.
 
 ### Volume Level
 Has four levels:
@@ -69,13 +83,8 @@ Allows/denies the unit to read emails ( Notecards )
 ### [PRESETS]
 Opens the preset menu, which will list the current saved Subsystems presets. You can also add one with the current values of the subsystem menu. If you click in one of the named presets a new menu will open which will allow you to apply, delete or modify the preset.
 
+<div class="top-marker"><a href="#a-title">Top</a></div>
 ## IO Menu
-
-### Out. Filters
-Not implemented **TODO**
-
-### In. Filters
-Not implemented **TODO**
 
 ### Out. release
 Allows/denies the unit to release their output ( allows them to use the command !release to free their voice from the controller )
@@ -84,6 +93,7 @@ Allows/denies the unit to release their output ( allows them to use the command 
 Not implemented
 
 
+<div class="top-marker"><a href="#a-title">Top</a></div>
 ## Administration
 
 ### Access
@@ -147,6 +157,7 @@ lists installed software so you can uninstall it
 #### Servers
 Lists OeM servers in the region, and if you choose one, connects you to them to install or update software
 
+<div class="top-marker"><a href="#a-title">Top</a></div>
 ## Power
 
 ### Shutdown
@@ -158,12 +169,17 @@ Turns the unit on
 ### Restart
 Reboots the unit
 
+<div class="top-marker"><a href="#a-title">Top</a></div>
 ## Status
-At the moment gives very simple information. In the future it will give more.
+Causes the unit to print out status information to nearby.
 
+<div class="top-marker"><a href="#a-title">Top</a></div>
 ## Applications
-Not implemented **TODO**
+A list of all installed applications in the unit, applications are additional bits of software that add functionallity.
 
+This contains a list of applications, clicking on an application shows more details, like registred commands and possibly a menu or status print out functionality.
+
+<div class="top-marker"><a href="#a-title">Top</a></div>
 ## Follow
 Opens a menu listing people and the distances to them. If you select one of them, the unit will follow them.
 One one avatar is selected, a new button will appear "~stop~" to stop the following.
@@ -175,12 +191,14 @@ Opens a menu which allows to set the distance from which the unit will follow
 #### [Custom]
 Opens a Textbox to set the distance you want the unit to follow from (use a period if you want to set a decimal number)
 
+<div class="top-marker"><a href="#a-title">Top</a></div>
 ## Programming
 Gives a menu with the different options programmed via notecards.
 These allow you to change many things, ranging from the Rules visible to the unit, to restrictions placed upon them.
 
 See [Notecard Scripting](./notecard_scripting) for more details.
 
+<div class="top-marker"><a href="#a-title">Top</a></div>
 ## Devices
 Shows a list of the devices connected to the controller. If you click them you can obtain information about them, as well as diconnecting them.
 
