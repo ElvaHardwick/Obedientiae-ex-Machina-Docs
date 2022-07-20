@@ -1,169 +1,123 @@
-## TODO Document
+# OeM Application API
 
-### the Application API
-#### TODO MAKE AN APPLICATION API
+Fair warning: Consider this a living document, it will be expanded in time based on feedback.
 
-### Commands
+Table of Contents:
 
-### Filters
-#### FILTER\_REGISTER
+ * [Our structure](#structure)
+ * [Commands to the system](#commands)
+ * [Menu handling](#menus)
+ * [Variables and configuration](#variables)
+ * [Rainbow example](#rainbow-example)
 
-This is a message that should be sent right after any script with a filter in it is installed. Send a linked message with this number and the name of the filter(s) separated by the character 0xE010 as the string. The key should be the name of your script.
+<div class="top-marker"><a href="#a-title">Top</a></div>
+# Structure
+The most important thing for developing an extension/application to OeM is to use a viewer that supports a precompiler and to include our include file ([download OeM\_Api.lsl](lsl/OeM_Api.lsl)).
 
-    llMessageLinked ( LINK_SET, FILTER_REGISTER, llDumpList2String( gFilters, llChar( 0xE010 ) ) ,  llGetScriptName());
+We really like our #define macro trickery over at OeM, it helps us ensure our code is easy to read even when *actually* it's doing a lot of things.
 
-#### FILTER\_UNREGISTER
+Our first example application should help elaborate: ([download App\_Minimal.lsl](lsl/App\_Minimal.lsl))
 
-This is the linked message that HAS to be sent before any script with a filter in it is uninstalled. You'll be informed of that via another linked message TODO: LINKED MESSSAGE NAME. Similar to MESSAGEID\_FILTER\_REGISTER, the string is the name of the filters separated by the character 0xE010 as the string and the key should be the name of your script.
+It works through most of the important bits of setting up an application.
 
-    llMessageLinked ( LINK_SET, FILTER_UNREGISTER, llDumpList2String( gFilters, llChar( 0xE010 ) ) ,  llGetScriptName());
+{% highlight c %}
+{% include_relative assets/lsl/App_Minimal.lsl %}
+{% endhighlight %}
 
+Our second example application is a lot more complex and we will include it at the [end](#rainbow-example), but it's a good place to start hacking: ([download App\_Rainbow.lsl](lsl/App\_Rainbow.lsl))
 
-#### FILTER\_NEXT\_FILTER
-This linked message is used to set up the pipeline of filters through which the unit's speech or the unit's hearing will go through. The key sent with the linked message is the filter name this linked message is targeting. The string sent in the linked message is the name of the filter that goes after. It's possible that this name is an empty string, but it's not a special case you should handle. You should default this value to an empty string when in doubt.
+It shows off how to do menus, and how commands can have permissions.
 
-This message id serves for both input filters and output filters.
+(Known bug: The meta information (author, version, etc) in Applications won't be updated if you recompile a script, you can `@reset applications` to work around this.)
 
-Here is an example for a filter that is named in the same way as the script.
-
-    if ( number == FILTER_NEXT_FILTER ) {
-        if ( (string) data == llGetScriptName () ) nextFilter = message;
-    }
-
-Here is an example for a filter that is inside a script with multiple filters in it.
-
-    if ( number == FILTER_NEXT_FILTER ) {
-        if ( llListFindList(gFilters, [(string) data ] ) != -1 ) {
-            integer pos = llListFindList(filters_order, [(string)data] );
-            if ( pos == -1 ) {
-                filters_order += [(string) data, message];
-            } else {
-                filters_order = llListReplaceList(filters_order, [message], pos+1, pos+1);
-            }
-        }
-    }
-
-#### FILTER\_OUTPUT   
-
-This linked message serves to send the unit's speech through the filter pipeline. You have to check if the key of the linked message is the name of one of your filters and if it is, process the speech stored in the linked message string. Once you are finished make sure to pass it on with this same message id to the next filter, which you have received with MESSAGEID\_FILTER\_NEXT\_FILTER.
-
-The speech is encoded in a slightly complex way. It is a list that separates the emotes from the actual speech, with the character 0xE010. The first element of the list is the volume level this message will try to go through as (whisper, normal or shout). Note that this level might not be the outputed due to volume restrictions. The second one must be checked to see if it is a string that says "EMOTE". If it is, then the next element is the emote part of the chat, if it isn't and it says "SPEAK", the next element is the speech part. After that it alternates between emotes and speech. THe first and lst character of each part is separated by a control character
-
-
-#### FILTER\_INPUT
-
-Same as FILTER\_OUTPUT, but instead of filtering the unit's speech, you are filtering what it hears. So there is only one difference. The first element of the list instead of the volume of the input, is the UUID of the speaker.
-
-Just like in FILTER\_OUTPUT, make sure you pass the message down the pipeline.
-
-
-### Think/Say/Stuff
-#### OUTPUT\_VOICE
+<div class="top-marker"><a href="#a-title">Top</a></div>
+# Commands
+## Think/Say/Stuff
 This linked message is used when the controller has to ouput some text. The structure is simple: the string contains the message to be outputted while the key contains the output mode. There are several output modes, each one having their own reason to exist.
 
-1. OEM\_WHISPER, OEM\_SHOUT, OEM\_NORMAL: These modes will output the text as if it was written by the unit. This means that if the unit has their mind or volume off, these won't work.
-2. OEM\_THINK: Will relay the message ONLY to the unit, in the same way the chat command "relay" does. RLV commands won't be relayed.
-3. OEM\_ANNOUNCE, OEM\_ANNOUNCE\_S, OEM\_ANNOUNCE\_W: Will act as if it was a message NOT produced by the mind of the unit, and thus will ignore the mind subsystem being off. S is for shout, W for whisper.
+1. `DO_OEM_WHISPER`, `DO_OEM_SHOUT`, `DO_OEM_NORMAL`: These modes will output the text as if it was written by the unit. This means that if the unit has their mind or volume off, these won't work.
+2. `DO_OEM_THINK`: Will relay the message ONLY to the unit, in the same way the chat command "relay" does. RLV commands won't be relayed.
+3. `DO_OEM_ANNOUNCE`, `DO_OEM_ANNOUNCE_S`, `DO_OEM_ANNOUNCE_W`: Will act as if it was a message NOT produced by the mind of the unit, and thus will ignore the mind subsystem being off. S is for shout, W for whisper.
 
+An example use is:
 
-### Restrictions
+    DO_OEM_THINK( "This unit likes writing extensions for OeM" );
+
+## Restrictions
 
 The controller allows us to apply and remove restrictions from the unit. It is not a RLV relay, it has a limited number of restrictions it applies, identified with numbers. These numbers are powers of 2, so that they can all be used as flags inside an integer.
 
 The controller keeps track of "who" has issued which restrictions and won't lift them until everyone has released them. That means that the subsystem menu and the power management both have motor speed restricted. then the subsystem menu lifts its restriction. The controller won't lift the restriction because the power management still has theirs issued.
 
-Just a small note, to make everyone's life simpler. Bitwise logic operators. To add a new flag -> flags = flags | new\_flag. To remove a flag -> flags = flags & ~new\_flag.
+Just a small note, to make everyone's life simpler. Bitwise logic operators. To add a new flag: 
 
-#### RESTRICTION\_APPLY
+    flags = flags \| new\_flag.
+
+To remove a flag
+
+    flags = flags & ~new\_flag.
+
+### RESTRICTION\_APPLY
 
 This linked message is used to apply restrictions on the unit. The string must be a number that contains the flags for the restrictions that you want to apply. In the key you must use your identifier. This should be a short string (we want to save memory) but asunique as you can. The device will add the restriction to the restrictions you have applied and if that restriction hadn't been applied yet, the system will issue the RLV command.
 
     SEND_LINKED_MESSAGE( MESSAGEID_RESTRICTION_APPLY, ([RESTRICTION_SPEECH]), "Core_IO_Menu" );
 
-#### RESTRICTION\_RELEASE
+### RESTRICTION\_RELEASE
 
 The opposite of apply, you have to send an integer with the restrictions flags you want to lift and your identifier as the key. The system will remove these flags from the restrictions you have applied and if nobody else has those restrictions applied, then it will issue the RLV command to lift them.
 
-#### RESTRICTION\_RELEASE\_ALL 
+### RESTRICTION\_RELEASE\_ALL 
 
-Will release all the restrictions that have the identifier sent in the key. The rest works like RESTRICTION\_RELEASE
+Will release all the restrictions that have the identifier sent in the key. The rest works like `RESTRICTION_RELEASE`
 
-#### RESTRICTION\_SAFEWORD   
+### RESTRICTION\_SAFEWORD   
 
 Will release ALL the restrictions, no matter what the origin was for. If you receive this linked message, you can assume your restrictions have been forgotten by the system.
 
-#### RESTRICTION\_UPDATE	 
+### RESTRICTION\_UPDATE	 
 
 This is a linked message that is sent after any of the previous messages has been received. The string of this Linked Message contains the previous collective flags status and the new one, separated as a list.. This message is sent even if there has been no change.
 
-#### RESTRICTION\_REQUEST\_STATUS 
+### RESTRICTION\_REQUEST\_STATUS 
 
 Linked message to request the current collective flag status.
 
-#### RESTRICTION\_STATUS 
+### RESTRICTION\_STATUS 
 
 Anser to the previous linked message, containing only the current overall flag status.
 
+<div class="top-marker"><a href="#a-title">Top</a></div>
+# Menus
+## MESSAGEID\_APPLICATION\_MENU\_OPEN and MESSAGEID\_APPLICATION\_MENU\_HANDLE\_INPUT 
 
-### Menus
-#### OPEN\_MENU
-#### SET\_MENUSTATE
+We've tried to take a lot of the mess of dialogs away, you will need a few things (check [the rainbow example](#rainbow-example) for details) like menu\_channel and a flag in `OEM_APPLICATION_INIT`, otherwise the dialog handling is hopefully fairly simple:
 
+    if ( ( number == MESSAGEID_APPLICATION_MENU_OPEN || number == MESSAGEID_APPLICATION_MENU_HANDLE_INPUT ) && llGetSubString( message, 0, 39 ) == __app_id ) {
+        if ( number == MESSAGEID_APPLICATION_MENU_HANDLE_INPUT ) toggle_rainbow( data );
 
-## Linked messages
+        llDialog( data, "Toggle rainbow mdoe", [ TEXT_MENU_ENDING, "Toggle" ], menu_channel );
+    }
 
-### MESSAGEID\_PARSE\_MENUINPUT
-Send by the menu parser script, if it is unable to handle the message from a dialog.
+The key field in the linked message (here `data`) contains the relevant avatar id. Note that the example doesn't do any parsing of the message, that would be the following
 
-Contains two json encoded parameters in `message`, the first is the current menustate, the second is the received text.
-The key `data` contains the relevant avatar id.
+    list parameters = DECODE_LIST_2_STRING( message );
+    string menu_path = llList2String( parameters, 0 );
+    string button_value = llList2String( parameters, 1 );
 
-### MESSAGEID\_OPEN\_MENU
-Can be send by multiple things, most often in cases of [Back] buttons where the script handling the current menu is not responsible for the new menu.
+Note the menu\_path bit, our menu system is based on something similar to a folder structure, if you prefix your button with `APPLICATION_MENU_CHARACTER` you'll get a `MENU_OPEN` message instead of a `HANDLE_INPUT` message, the system will automatically track what 'path' you're in.
 
-Contains the unencoded new name in message. An example of use to open the main  menu
+Probably you won't need to use menu\_path if your menu is fairly simple, but we want to offer it anyway.
 
+Oh and the `TEXT_MENU_ENDING`, that's a list of 3 buttons that will be automatically and neatly handled by the system so you don't need to worry about it.
+There's a few more like that in the include file.
 
-    case MESSAGEID_OPEN_MENU:
-        switch ( message ) {
-            case "":
-                open_root_menu( data );
-                set_menu_state( llListFindList( menu_states, [ data ] ), "" );
-                break;
-            default:
-        }
-        break;
+<div class="top-marker"><a href="#a-title">Top</a></div>
+# Rainbow example
 
-### MESSAGEID\_SET\_MENUSTATE
-Can be send by multiple sources, used to store the current menu position for the avatar with the UUID "data" after opening a new dialog.
-This way the resulting message can be dispatched appropriately.
+Here is the full code of our rainbow example:
 
-Don't send this manually, use the following pre-defined macro:
+{% highlight c %}
+{% include_relative lsl/App_Rainbow.lsl %}
+{% endhighlight %}
 
-    SET_MENUSTATE( "avatars/0", data );
-
-### MESSAGEID\_REQUEST\_CONFIGURATION
-Automatically send on startup of any script using `STATE\_ENTRY\_INIT;`.
-Used to synchronise settings like wearer name, etc. Small, often-needed simple strings.
-
-
-### MESSAGEID\_SET\_CONFIGURATION
-Used to respond to `MESSAGEID\_REQUEST\_CONFIGURATION`, use the macros  for convenience:
-
-    START_SEND_CONFIG_ON_REQUEST
-        SEND_CONFIG_VAR( pod_owner ),
-        SEND_CONFIG_VAR( menu_channel )
-    END_SEND_CONFIG_ON_REQUEST
-
-The above is enough synchronize the two variables pod\_owner and menu\_channel automatically.
-
-### MESSAGEID\_STORE\_CONFIGURATION
-Used to parse incoming configuration, will start a loop through the decoded values send via above, setting each variable that matches.
-Again, use the convenient macros
-
-    switch ( number ) {
-        START_READ_CONFIG_ON_MESSAGE
-            READ_CONFIG_VAR_INT( menu_channel )
-            READ_CONFIG_VAR_STRING( pod_owner )
-            READ_CONFIG_VAR_LIST( avatar_settings )
-        END_READ_CONFIG_ON_MESSAGE
