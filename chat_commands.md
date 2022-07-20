@@ -1,10 +1,6 @@
 # Chat commands for OeM controllers.
 
-Chat commands can be introduced channel 1 by introducing the first two characters of the unit's identification, without distinguishig between lower or uppercases.
-
-For example, to send a command to a unit whose name is L-Research-Unit, you'd have to use "l-command", for a unit named 632-78-123, yould have to use "63command", etc.
-
-**IMPORTANT** If a unit has their serial number as their name, instead the first to letters of their username will be used (gonkaotic resident -> go )
+Chat commands can be introduced channel 1 by introducing the first two characters of the unit's username (gonkaotic resident -> go), without distinguishig between lower or uppercases.
 
 A unit can issue commands to itself if their voice is being processed by the controller by simply staring the line with @, as shown in the examples.
 
