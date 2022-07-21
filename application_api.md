@@ -16,7 +16,7 @@ The most important thing for developing an extension/application to OeM is to us
 
 We really like our #define macro trickery over at OeM, it helps us ensure our code is easy to read even when *actually* it's doing a lot of things.
 
-Our first example application should help elaborate: ([download App\_Minimal.lsl](lsl/App\_Minimal.lsl))
+Our first example application should help elaborate: ([download App\_Minimal.lsl](lsl/App_Minimal.lsl))
 
 It works through most of the important bits of setting up an application.
 
@@ -24,7 +24,7 @@ It works through most of the important bits of setting up an application.
 {% include_relative assets/lsl/App_Minimal.lsl %}
 {% endhighlight %}
 
-Our second example application is a lot more complex and we will include it at the [end](#rainbow-example), but it's a good place to start hacking: ([download App\_Rainbow.lsl](lsl/App\_Rainbow.lsl))
+Our second example application is a lot more complex and we will include it at the [end](#rainbow-example), but it's a good place to start hacking: ([download App\_Rainbow.lsl](lsl/App_Rainbow.lsl))
 
 It shows off how to do menus, and how commands can have permissions.
 
