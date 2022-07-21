@@ -16,7 +16,7 @@ default
     {
         // This is an important line that does.. a lot of work, it will tell the controller that this script exists, who wrote it, what it's name is and what options it has.
         // We're saying here that we have a menu, and commands!
-        OEM_APPLICATION_INIT( "Elva Hardwick", "Minimal", "v0.1.0", APPLICATION_FLAG_HAS_COMMANDS );
+        OEM_APPLICATION_INIT( "Elva Hardwick", "Minimal", "v0.1.0", APPLICATION_FLAG_HAS_COMMANDS | APPLICATION_FLAG_HAS_MENU );
     }
 
     changed( integer change ) {
