@@ -49,11 +49,11 @@ The controller keeps track of "who" has issued which restrictions and won't lift
 
 Just a small note, to make everyone's life simpler. Bitwise logic operators. To add a new flag: 
 
-    flags = flags \| new\_flag.
+    flags = flags | new_flag.
 
 To remove a flag
 
-    flags = flags & ~new\_flag.
+    flags = flags & ~new_flag.
 
 ### RESTRICTION\_APPLY
 
