@@ -28,8 +28,6 @@ Our second example application is a lot more complex and we will include it at t
 
 It shows off how to do menus, and how commands can have permissions.
 
-(Known bug: The meta information (author, version, etc) in Applications won't be updated if you recompile a script, you can `@reset applications` to work around this.)
-
 <div class="top-marker"><a href="#a-title">Top</a></div>
 # Commands
 ## Think/Say/Stuff
