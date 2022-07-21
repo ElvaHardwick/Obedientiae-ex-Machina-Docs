@@ -87,7 +87,7 @@
         } else if ( number == MESSAGEID_PROCESS_COMMAND_AUTH ) {
 
 #define COMMAND_HANDLE( command_name ) \
-    if ( number == MESSAGEID_PROCESS_COMMAND && command == command_name ) {
+    if (  && command == command_name ) {
 
 
 #define ON_REQUEST_FOR_COMMANDS( commands ) if ( number == MESSAGEID_REQUEST_COMMANDS ) SEND_LINKED_MESSAGE(MESSAGEID_ADD_COMMAND, commands, NULL_KEY);
