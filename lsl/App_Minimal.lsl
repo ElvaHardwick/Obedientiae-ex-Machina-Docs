@@ -35,7 +35,7 @@ default
             END_HELP_HANDLE
 
             // This indicates that the command hello_world *needs* the ADMINISTRATION premission, you could also change this to COMMAND_HANDLE if you don't think it needs permissions
-            COMMAND_HANDLE( "hello_world" )
+            COMMAND_WITH_PERMISSIONS_HANDLE( "hello_world", PERMISSION_ADMINISTRATION_FLAG )
                 DO_OEM_ANNOUNCE( "Hello soon to be conquered world!" )
             END_COMMAND_HANDLE
         END_COMMAND_GROUP_HANDLE
