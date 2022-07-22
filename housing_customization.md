@@ -11,7 +11,7 @@ Second up, we offer some menu based customizations.
 
 ## Advanced configuration
 
-Aesthetics and design features are import for any line of units, our Controller Housings are designed to be relatively easy to to customize.
+Aesthetics and design features are important for any line of units, our Controller Housings are designed to be relatively easy to to customize.
 
 This isn't *super* supported, you might break the housing, you can always get a redelivery, but the easiest thing to do is to first create a backup.
 This document is also a work in progress and will be expended upon mostly based on request.
