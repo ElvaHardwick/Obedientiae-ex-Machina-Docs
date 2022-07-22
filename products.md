@@ -1,6 +1,6 @@
 # OeM Products
 
-A list of our (growing) collection of products, by group
+A list of our current collection of products, sorted by group. We will announce additions to this list as they come.
 
 Table of Contents:
 
@@ -9,45 +9,49 @@ Table of Contents:
  * [Battery](#battery)
 
 <div class="top-marker"><a href="#a-title">Top</a></div>
-# Controller
-Our main product, the brain of any bot-adjacent being. RP, RLV, customization and more.
+# The Controller
+Our flagship product, the control unit of any type of unit. It comes with built in RLV support, uses notecards to manage features, offers a large degree of visual and feature customizations, and functions as a great tool for use in roleplay scenarios and more.
 
 ![Product image](/Obedientiae-ex-Machina-Docs/images/products/Controller_2022.png)
 
 <div class="top-marker"><a href="#a-title">Top</a></div>
 # Controller housings
-The main way for other people to interact with your OeM system, and a quick visual way too identify a unit.
+Controller Housings are the most convenient and quick way for you (or friends, or anybody) to interact with your unit’s Controller system. It offers a quick, foolproof way to identify a unit by displaying its serial number and a way to identify the unit’s type. For units that utilize electricity, this also offers a battery charge indicator.
 
-These will typicall show your serial number, what kind of being you are and a battery indicator if you have a battery.
+All of our Wearable and Equippable products are able to be Copied and Modified to your heart’s desire, however our Scripts are offered with Copy permissions only.
 
-All our products (but not our scripts) are of course copyable and moddable to your (synthetic) hearts content.
+Requires a Controller to use.
 
 ## CH-One
 ![Product image](/Obedientiae-ex-Machina-Docs/images/products/CH_ONE_2022_4.png)
 
-Shows your serial number, battery charge, the color reflects your the color in your controller.
+The CH-One Controller Housing is a wearable item meant for your unit, which shows its serial number, and a battery charge indicator and the unit's configured color.
+
+Requires a Controller to use, and links to it smoothly.
+
 
 ## CH-One Mini
 ![Product image](/Obedientiae-ex-Machina-Docs/images/products/CH_One_Mini_2.png)
 
-Shows your serial number, battery charge, the color reflects your the color in your controller.
+The CH-One Mini Controller Housing is our second wearable item for your unit, which offers a serial number display and a battery charge indicator. If the unit does not use a battery, the battery holder will automatically hide itself. (This behavior can be adjusted via a menu - Navigating through ‘Devices→CH One Mini→Show/Hide.’)
 
-The battery holder automatically hides if you don't have a battery, but this behaviour can be configured via a menu (Devices-\>CH One Mini-\>Show hide).
-Likewise, it'll also position the battery (if you got one), this behaviour can also be configured via that menu (Devices-\>CH One Mini-\>Battery position).
+Likewise, if your unit possesses a battery, the menu may be used to position the battery holder. (Navigating through ‘Devices→CH One Mini→Battery Position.)
+
+Requires a Controller to use, and links to it smoothly.
 
 <div class="top-marker"><a href="#a-title">Top</a></div>
 # Battery
 
-Our products are focused on configurabillity, and our batteries are no exception.
-
-If you don't want to use a battery (or can't afford it yet!) well, you don't need to!
-
-If you like the fun of it but don't want to charge too frequently, you can set the duration to a day or two.
-
-If you want to be reminded that you are a machine, helpless and dependent, set the duration to an hour, and configure the controller to *require* a battery, you'll be reminded all right~
-
-All configurations of these can be done via our deep configuration stations, which are rezzed in our store on the second level (underneath the banner "Config Stations")
-
 ## Basic Battery (Catalytic Fusion Battery 98)
+
+We’ve put our main focus towards the user’s ability to configure their products as they wish, and our batteries are no exception. 
+
+If you do not wish to use a battery, or cannot afford to purchase one, you are under no obligation to do so.
+
+If in possession of a battery, you are able to configure its electrical capacity to last for a day or two for general use. However, if you wish to remind your unit that they depend on someone greater than themselves, you may set the capacity to an hour per battery and configure the controller to require a battery for continued use… And set a timer for how long your unit lasts before begging for milliampere scraps.
+
+(All configuration of these battery features can be tweaked at our deep configuration stations, which are rezzed out in our inworld store’s second level. They are located underneath the banner that reads, ‘Config Stations.’)
+
+Requires a Controller to use.
 
 ![Product image](/Obedientiae-ex-Machina-Docs/images/products/OeM_Battery_3.png)
