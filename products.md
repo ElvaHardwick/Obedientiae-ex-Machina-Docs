@@ -1,6 +1,8 @@
-### Table of Contents
+# OeM Products
 
 A list of our (growing) collection of products, by group
+
+Table of Contents:
 
  * [Controller](#controller)
  * [Controller housings](#controller-housings)

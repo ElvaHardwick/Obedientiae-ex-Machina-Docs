@@ -1,4 +1,6 @@
-### Table of Contents
+# Menu System
+
+Table of Contents:
 
  * [Subsystems Menu](#subsystems-menu)
  * [IO Menu](#io-menu)
