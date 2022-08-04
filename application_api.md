@@ -85,6 +85,28 @@ Linked message to request the current collective flag status.
 
 Anser to the previous linked message, containing only the current overall flag status.
 
+
+## Battery
+
+### SET_STANDARD_DRAIN
+
+This linked message will add the quantity indicated in the message parameter from the battery capacity in a periodic manner. Note that quantity can be negative. The data identifies the source of this "drain" and replaces any previous value it had.
+
+### CHARGE
+
+This linked message will add the amount specified in the message parameter to the current capacity of the battery, just one time. Note that the quantity can be negative.
+
+### GET_BATTERY_STATUS
+
+This linked message is used to request the battery status, which is reported with [MESSAGEID_BATTERY_STATUS](#battery_status)
+
+### BATTERY_STATUS
+
+This is a linked message sent when there is a relatively significant change in the battery capacity or when requested via [MESSAGEID_GET_BATTERY_STATUS](#get_battery_status). The message parameter contains a list of three elements. The first one is an integer which indicates the current capacity, the second one is another integer which indicates the maximum capacity and the third one is a float which indicates the percentage (between 0 and 1) of battery.
+
+
+
+
 <div class="top-marker"><a href="#a-title">Top</a></div>
 # Menus
 ## MESSAGEID\_APPLICATION\_MENU\_OPEN and MESSAGEID\_APPLICATION\_MENU\_HANDLE\_INPUT 
@@ -118,4 +140,5 @@ Here is the full code of our rainbow example:
 {% highlight c %}
 {% include_relative lsl/App_Rainbow.lsl %}
 {% endhighlight %}
+
 
