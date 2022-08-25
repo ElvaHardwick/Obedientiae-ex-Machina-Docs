@@ -30,6 +30,19 @@ function convert_code() {
       return prefix() + func(n);
     }
   }
+  function stringify(n) {
+    if ( ( n[0] == '"' && n[n.length-1] == '"' ) || ( n[0] == "'" && n[n.length-1] == "'" ) ) {
+      n = n.substr(1,n.length-2); n = n.replace(/"/g, '\\"');
+    }
+    return `"${n}"`;
+  }
+  function stringify_var(n) {
+    if ( n.match(/^([0-9]+\.?)[0-9]*$/) == null )
+      return stringify(n);
+    else
+      return n;
+  }
+
 
   function dec_block() {
     in_block--;
@@ -38,29 +51,26 @@ function convert_code() {
 
   var regexes = [
     / +/,
-    /"([^"]|\""]*)"/,
-    /\n *\n/,
-    /\n/,
-    /#.*/,
-    /mode +([a-zA-Z0-9=_-]*) +\((.*)\)(.*)/,
-    /action *\(([a-zA-Z0-9=_-]*) *= *([a-zA-Z0-9=_-]*)\)\.\.\./,
-    /rule *\(([a-zA-Z0-9=_-]*) *= *([a-zA-Z0-9=_-]*)\)\.\.\. *\n/,
-    new RegExp(` *(say${$('#acs_renamer_set').val()}) (.*)`),
-    new RegExp(` *(say${$('#acs_renamer_say').val()}) (.*)`),
-    new RegExp(` *(say${$('#acs_color').val()}) (.*)`),
-    / *([^:\n]*?):(.*)/,
-  ];
-  var rebuilds = [
     n => '',
+  
+    /"([^"]|\""]*)"/,
     n => n[0],
+  
+    /\n *\n/,
     function(n) {
       if (in_block > 0) {
         in_block--;
         return '\nend\n\n';
       } else return '\n\n'
     },
+  
+    /\n/,
     n => n[0],
+  
+    /#.*/,
     n => "// " + n[0].substring(1),
+  
+    /mode +([a-zA-Z0-9=_-]*) +\((.*)\)(.*)/,
     function(n) {
       var ret = `button ${n[1]}\n`;
       for (let button of n[2].matchAll(/ *([a-zA-Z0-9_ ]*) *= *\d[^;]*;/g)) {
@@ -70,11 +80,15 @@ function convert_code() {
 
       return ret;
     },
+  
+    /action *\(([a-zA-Z0-9=_-]*) *= *([a-zA-Z0-9=_-]*)\)\.\.\./,
     function(n) {
       var ret = `on ${n[1]} = "${n[2]}"`;
       in_block++;
       return ret;
     },
+  
+    /rule *\(([a-zA-Z0-9=_-]*) *= *([a-zA-Z0-9=_-]*)\)\.\.\. *\n/,
     function(n) {
       var ret = `when ${n[1]} = "${n[2]}"\n`;
       if ( in_block ) dec_block();
@@ -83,25 +97,35 @@ function convert_code() {
       in_rule = 1;
       return ret;
     },
+  
+    new RegExp(` *(say${$('#acs_renamer_set').val()}) (.*)`),
     prefixify(n => `set wearer_name=${n[2]}${prefix()}set manufacturer=`),
+  
+    new RegExp(` *(say${$('#acs_renamer_say').val()}) (.*)`),
     prefixify(n => `say ${n[2]}`),
+  
+    new RegExp(` *(say${$('#acs_color').val()}) (.*)`),
     prefixify(n => `set color=${n[2]}`),
+  
+    / *([^:\n]*?):(.*)/,
     prefixify(function(n) {
       switch (n[1]) {
         case "self":
-          return `think "${n[2]}"`;
+          return `think "${stringifyn[2])}"`;
         case "say":
-          return `${n[1]} "${n[2]}"`;
+          return `${n[1]} "${stringify(n[2])}"`;
         case "wait":
           return `wait ${n[2]}`;
         case "speechname":
-          return `set wearer_name=${n[2]}`;
+          return `set wearer_name=${stringify_var(n[2])}`;
         default:
           console.log(n);
           return `#Unknown: ${n[0]}`
       }
     }),
   ];
+  var rebuilds = regexes.filter((v,i) => i % 2 == 1);
+  regexes = regexes.filter((v,i) => i % 2 == 0)
   console.log( regexes );
 
   while (acs_code != '') {
