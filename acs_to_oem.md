@@ -83,26 +83,27 @@ function convert_code() {
       return ret;
     },
   
-    /action *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_ -]*)\)(\.\.\.)?/,
+    /action *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_ -]*)\)(\.\.\.\n)?/,
     function(n) {
       if ( in_block ) dec_block();
       var ret = `on ${n[1].replace(/ /g, '')} = ${stringify(n[2])}`;
+      if ( n[4] !== '\n' ) ret += '\n';
       in_block++;
       return ret;
     },
   
-    /rule *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_ -]*)\)(\.\.\.)? *([^\n]*)\n/,
+    /rule *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_ -]*)\) *([^\n]*)\n/,
     function(n) {
       if ( in_block ) dec_block();
       
-      if ( n[4] == "..." || n[4] == "" ) {
+      if ( n[3] == "..." || n[3] == "" ) {
         var ret = `when ${n[1].replace(/ /g, '')} = ${stringify(n[2])}\n`;
 
         in_block++;
         in_rule = 1;
         return ret;
       } else {
-        var ret = `when ${n[1].replace(/ /g, '')} = ${stringify(n[2])}\n    rule ${stringify(n[4])}\nend\n`;
+        var ret = `when ${n[1].replace(/ /g, '')} = ${stringify(n[2])}\n    rule ${stringify(n[3])}\nend\n`;
 
         return ret;
       }
