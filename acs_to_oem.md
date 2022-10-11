@@ -89,22 +89,21 @@ function convert_code() {
       return ret;
     },
   
-    /rule *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_ -]*)\)(\.\.\.)? *([^\n]+)\n/,
+    /rule *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_ -]*)\)(\.\.\.)? *([^\n]*)\n/,
     function(n) {
       if ( in_block ) dec_block();
-      var ret = `when ${n[1].replace(/ /g, '')} = ${stringify(n[2])}\n    rule ${stringify(n[4])}\nend\n`;
+      
+      if ( n[4] == "..." || n[4] == "" ) {
+        var ret = `when ${n[1].replace(/ /g, '')} = ${stringify(n[2])}\n`;
 
-      return ret;
-    },
-  
-    /rule *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_ -]*)\)(\.\.\.)? *\n/,
-    function(n) {
-      if ( in_block ) dec_block();
-      var ret = `when ${n[1].replace(/ /g, '')} = ${stringify(n[2])}\n`;
+        in_block++;
+        in_rule = 1;
+        return ret;
+      } else {
+        var ret = `when ${n[1].replace(/ /g, '')} = ${stringify(n[2])}\n    rule ${stringify(n[4])}\nend\n`;
 
-      in_block++;
-      in_rule = 1;
-      return ret;
+        return ret;
+      }
     },
   
     new RegExp(` *(say${$('#acs_renamer_set').val()}) (.*)`),
