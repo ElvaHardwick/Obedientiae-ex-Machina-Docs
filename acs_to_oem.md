@@ -31,6 +31,7 @@ function convert_code() {
     }
   }
   function stringify(n) {
+    while ( n[0] == ' ' ) n = n.substr(1);
     if ( ( n[0] == '"' && n[n.length-1] == '"' ) || ( n[0] == "'" && n[n.length-1] == "'" ) ) {
       n = n.substr(1,n.length-2); n = n.replace(/"/g, '\\"');
     }
@@ -110,7 +111,7 @@ function convert_code() {
     prefixify(n => `set wearer_name=${n[2]}${prefix()}set manufacturer=`),
   
     new RegExp(` *(say${$('#acs_renamer_say').val()}) (.*)`),
-    prefixify(n => `say ${n[2]}`),
+    prefixify(n => `say ${stringify(n[2])}`),
   
     new RegExp(` *(say${$('#acs_color').val()}) (.*)`),
     prefixify(n => `set color=${n[2]}`),
