@@ -97,7 +97,7 @@ function convert_code() {
       return ret;
     },
   
-    /rule *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_ -]*)\)(\.\.\.)? */,
+    /rule *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_ -]*)\)(\.\.\.)? *\n/,
     function(n) {
       if ( in_block ) dec_block();
       var ret = `when ${n[1].replace(/ /g, '')} = ${stringify(n[2])}\n`;
