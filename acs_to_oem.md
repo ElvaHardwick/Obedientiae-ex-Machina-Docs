@@ -81,14 +81,14 @@ function convert_code() {
       return ret;
     },
   
-    /action *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_-]*)\)\.\.\./,
+    /action *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_-]*)\)(\.\.\.)?/,
     function(n) {
       var ret = `on ${n[1].replace(/ /g, '')} = ${stringify(n[2])}`;
       in_block++;
       return ret;
     },
   
-    /rule *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_-]*)\)\.\.\. *\n/,
+    /rule *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_-]*)\)(\.\.\.)? *\n/,
     function(n) {
       var ret = `when ${n[1].replace(/ /g, '')} = ${stringify(n[2])}\n`;
       if ( in_block ) dec_block();
