@@ -13,7 +13,7 @@ Let me know if there's an issue.
 <script type="text/javascript" src="https://unpkg.com/jquery@3.6.0/dist/jquery.js"></script>
 <script type="text/javascript">
 function convert_code() {
-  acs_code = $('#beep').val().replace(/\\\n/g, '');
+  acs_code = $('#beep').val().replace(/\\\n/g, '') + '\n';
   oem_code = '';
 
   var in_block = 0;
