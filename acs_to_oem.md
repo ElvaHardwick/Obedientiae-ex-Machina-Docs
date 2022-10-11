@@ -92,7 +92,7 @@ function convert_code() {
     /rule *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_ -]*)\)(\.\.\.)? *([^\n]+)\n/,
     function(n) {
       if ( in_block ) dec_block();
-      var ret = `when ${n[1].replace(/ /g, '')} = ${stringify(n[2])}\n    rule ${stringify(n[4])}\nend`;
+      var ret = `when ${n[1].replace(/ /g, '')} = ${stringify(n[2])}\n    rule ${stringify(n[4])}\nend\n`;
 
       return ret;
     },
