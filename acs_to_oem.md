@@ -70,9 +70,9 @@ function convert_code() {
     /#.*/,
     n => "// " + n[0].substring(1),
   
-    /mode +([a-zA-Z0-9=_-]*) +\((.*)\)(.*)/,
+    /mode +([a-zA-Z0-9=_ -]*) +\((.*)\)(.*)/,
     function(n) {
-      var ret = `button ${n[1]}\n`;
+      var ret = `button ${n[1].replace(/ /g, '')}\n`;
       for (let button of n[2].matchAll(/ *([a-zA-Z0-9_ ]*) *= *\d[^;]*;/g)) {
         ret += `    option \"${button[1]}\"\n`;
       }
@@ -81,16 +81,16 @@ function convert_code() {
       return ret;
     },
   
-    /action *\(([a-zA-Z0-9=_-]*) *= *([a-zA-Z0-9=_-]*)\)\.\.\./,
+    /action *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_-]*)\)\.\.\./,
     function(n) {
-      var ret = `on ${n[1]} = "${n[2]}"`;
+      var ret = `on ${n[1].replace(/ /g, '')} = ${stringify(n[2])}`;
       in_block++;
       return ret;
     },
   
-    /rule *\(([a-zA-Z0-9=_-]*) *= *([a-zA-Z0-9=_-]*)\)\.\.\. *\n/,
+    /rule *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_-]*)\)\.\.\. *\n/,
     function(n) {
-      var ret = `when ${n[1]} = "${n[2]}"\n`;
+      var ret = `when ${n[1.replace(/ /g, '')]} = ${stringify(n[2])}\n`;
       if ( in_block ) dec_block();
 
       in_block++;
