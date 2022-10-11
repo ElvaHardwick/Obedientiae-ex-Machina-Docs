@@ -73,7 +73,7 @@ function convert_code() {
     /mode +([a-zA-Z0-9=_ -]*) +\((.*)\)(.*)/,
     function(n) {
       var ret = `button ${n[1].replace(/ /g, '')}\n`;
-      for (let button of n[2].matchAll(/ *([a-zA-Z0-9_ -]*) *= *\d[^;]*;/g)) {
+      for (let button of n[2].matchAll(/ *([a-zA-Z0-9_ -]*)( *= *\d[^;]*)?;/g)) {
         ret += `    option \"${button[1]}\"\n`;
       }
       ret += "end\n";
