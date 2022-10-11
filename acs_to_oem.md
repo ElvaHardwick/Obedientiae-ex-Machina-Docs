@@ -111,7 +111,7 @@ function convert_code() {
     prefixify(function(n) {
       switch (n[1]) {
         case "self":
-          return `think "${stringifyn[2])}"`;
+          return `think "${stringify(n[2])}"`;
         case "say":
           return `${n[1]} "${stringify(n[2])}"`;
         case "wait":
