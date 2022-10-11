@@ -33,8 +33,9 @@ function convert_code() {
   function stringify(n) {
     while ( n[0] == ' ' ) n = n.substr(1);
     if ( ( n[0] == '"' && n[n.length-1] == '"' ) || ( n[0] == "'" && n[n.length-1] == "'" ) ) {
-      n = n.substr(1,n.length-2); n = n.replace(/"/g, '\\"');
+      n = n.substr(1,n.length-2);
     }
+    n = n.replace(/"/g, '\\"');
     return `"${n}"`;
   }
   function stringify_var(n) {
@@ -120,9 +121,9 @@ function convert_code() {
     prefixify(function(n) {
       switch (n[1]) {
         case "self":
-          return `think "${stringify(n[2])}"`;
+          return `think ${stringify(n[2])}`;
         case "say":
-          return `${n[1]} "${stringify(n[2])}"`;
+          return `${n[1]} ${stringify(n[2])}`;
         case "wait":
           return `wait ${n[2]}`;
         case "speechname":
