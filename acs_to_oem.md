@@ -13,7 +13,7 @@ Let me know if there's an issue.
 <script type="text/javascript" src="https://unpkg.com/jquery@3.6.0/dist/jquery.js"></script>
 <script type="text/javascript">
 function convert_code() {
-  acs_code = $('#beep').val().replace(/\\\n/g, '');
+  acs_code = $('#beep').val().replace(/\\\n/g, '') + '\n';
   oem_code = '';
 
   var in_block = 0;
@@ -30,6 +30,21 @@ function convert_code() {
       return prefix() + func(n);
     }
   }
+  function stringify(n) {
+    while ( n[0] == ' ' ) n = n.substr(1);
+    if ( ( n[0] == '"' && n[n.length-1] == '"' ) || ( n[0] == "'" && n[n.length-1] == "'" ) ) {
+      n = n.substr(1,n.length-2);
+    }
+    n = n.replace(/"/g, '\\"');
+    return `"${n}"`;
+  }
+  function stringify_var(n) {
+    if ( n.match(/^([0-9]+\.?)[0-9]*$/) == null )
+      return stringify(n);
+    else
+      return n;
+  }
+
 
   function dec_block() {
     in_block--;
@@ -38,71 +53,91 @@ function convert_code() {
 
   var regexes = [
     / +/,
-    /"([^"]|\""]*)"/,
-    /\n *\n/,
-    /\n/,
-    /#.*/,
-    /mode +([a-zA-Z0-9=_-]*) +\((.*)\)(.*)/,
-    /action *\(([a-zA-Z0-9=_-]*) *= *([a-zA-Z0-9=_-]*)\)\.\.\./,
-    /rule *\(([a-zA-Z0-9=_-]*) *= *([a-zA-Z0-9=_-]*)\)\.\.\. *\n/,
-    new RegExp(` *(say${$('#acs_renamer_set').val()}) (.*)`),
-    new RegExp(` *(say${$('#acs_renamer_say').val()}) (.*)`),
-    new RegExp(` *(say${$('#acs_color').val()}) (.*)`),
-    / *([^:\n]*?):(.*)/,
-  ];
-  var rebuilds = [
     n => '',
+  
+    /"([^"]|\""]*)"/,
     n => n[0],
+  
+    /\n *\n/,
     function(n) {
       if (in_block > 0) {
         in_block--;
         return '\nend\n\n';
       } else return '\n\n'
     },
+  
+    /\n/,
     n => n[0],
+  
+    /#.*/,
     n => "// " + n[0].substring(1),
+  
+    /mode +([a-zA-Z0-9=_ -]*) +\((.*)\)(.*)/,
     function(n) {
-      var ret = `button ${n[1]}\n`;
-      for (let button of n[2].matchAll(/ *([a-zA-Z0-9_ ]*) *= *\d[^;]*;/g)) {
+      var ret = `button ${n[1].replace(/ /g, '')}\n`;
+      for (let button of n[2].matchAll(/ *([a-zA-Z0-9_ -]+)( *= *\d[^;]*)?;?/g)) {
         ret += `    option \"${button[1]}\"\n`;
       }
       ret += "end\n";
 
       return ret;
     },
+  
+    /action *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_ -]*)\)(\.\.\.\n)?/,
     function(n) {
-      var ret = `on ${n[1]} = "${n[2]}"`;
-      in_block++;
-      return ret;
-    },
-    function(n) {
-      var ret = `when ${n[1]} = "${n[2]}"\n`;
       if ( in_block ) dec_block();
-
+      var ret = `on ${n[1].replace(/ /g, '')} = ${stringify(n[2])}`;
+      if ( n[4] !== '\n' ) ret += '\n';
       in_block++;
-      in_rule = 1;
       return ret;
     },
+  
+    /rule *\(([a-zA-Z0-9=_ -]*) *= *([a-zA-Z0-9=_ -]*)\) *([^\n]*)\n/,
+    function(n) {
+      if ( in_block ) dec_block();
+      
+      if ( n[3] == "..." || n[3] == "" ) {
+        var ret = `when ${n[1].replace(/ /g, '')} = ${stringify(n[2])}\n`;
+
+        in_block++;
+        in_rule = 1;
+        return ret;
+      } else {
+        var ret = `when ${n[1].replace(/ /g, '')} = ${stringify(n[2])}\n    rule ${stringify(n[3])}\nend\n`;
+
+        return ret;
+      }
+    },
+  
+    new RegExp(` *(say${$('#acs_renamer_set').val()}) (.*)`),
     prefixify(n => `set wearer_name=${n[2]}${prefix()}set manufacturer=`),
-    prefixify(n => `say ${n[2]}`),
+  
+    new RegExp(` *(say${$('#acs_renamer_say').val()}) (.*)`),
+    prefixify(n => `say ${stringify(n[2])}`),
+  
+    new RegExp(` *(say${$('#acs_color').val()}) (.*)`),
     prefixify(n => `set color=${n[2]}`),
+  
+    / *([^:\n]*?):(.*)/,
     prefixify(function(n) {
       switch (n[1]) {
         case "self":
-          return `think "${n[2]}"`;
+          return `think ${stringify(n[2])}`;
         case "say":
-          return `${n[1]} "${n[2]}"`;
+          return `${n[1]} ${stringify(n[2])}`;
         case "wait":
           return `wait ${n[2]}`;
         case "speechname":
-          return `set wearer_name=${n[2]}`;
+          return `set wearer_name=${stringify_var(n[2])}`;
         default:
           console.log(n);
           return `#Unknown: ${n[0]}`
       }
     }),
   ];
-  console.log( regexes );
+  var rebuilds = regexes.filter((v,i) => i % 2 == 1);
+  regexes = regexes.filter((v,i) => i % 2 == 0)
+  var orig_acs_code = acs_code;
 
   while (acs_code != '') {
     if (in_rule) {
@@ -129,7 +164,8 @@ function convert_code() {
     }
 
     if (earliest_index >= 0 && earliest_match.index != 0) {
-      oem_code += '\n### UNHANDLED ###\n' + acs_code.substring(0, earliest_match.index);
+      var line_no = Array.from(orig_acs_code.substr(0, orig_acs_code.indexOf(acs_code)).matchAll('\n')).length+1;
+      oem_code += '\n### UNHANDLED ###\nLine number: ' + line_no + '\n' +  acs_code.substring(0, earliest_match.index);
       acs_code = '';
     }
     if (earliest_index == -1) {
@@ -148,7 +184,7 @@ function convert_code() {
 
   $('#boop').text(oem_code);
 }
-console.log($);
+      
 $(function() {
     $('#beep').change(convert_code);
     convert_code();

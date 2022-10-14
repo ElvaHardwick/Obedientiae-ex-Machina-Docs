@@ -170,6 +170,7 @@ We hope this, plus the examples, make the use of these commands clear.
 ### Command: relay
 + Permissions required: Menu
 + Usage: relay <"msg">
++ Alias: think (version 4.0+)
 + Description:
 
 	- This command will relay, anonymously, the message to the unit ( as if it were a message from the controller ).
