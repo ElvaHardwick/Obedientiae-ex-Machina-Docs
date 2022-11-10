@@ -1,3 +1,3 @@
 public: 3.2.0
-beta: 4.0.2
-shop: http://maps.secondlife.com/secondlife/GEL%20Community%2042/165/178/62
+beta: 4.0.6
+shop: http://maps.secondlife.com/secondlife/Pandora%20Box/76/207/62
