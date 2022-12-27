@@ -90,11 +90,11 @@ Anser to the previous linked message, containing only the current overall flag s
 
 ### SET_STANDARD_DRAIN
 
-This linked message will add the quantity indicated in the message parameter from the battery capacity in a periodic manner. Note that quantity can be negative. The data identifies the source of this "drain" and replaces any previous value it had.
+This linked message will add the quantity indicated in the message parameter from the battery capacity in a periodic manner. Note that quantity can be negative. The data identifies the source of this "drain" and replaces any previous value it had. The energy units are Watts second (Ws). So you have a reference, a unit with all subsystems turned on has a drain of -200 Ws and a 8 hour battery has around 6.3 million Ws
 
 ### CHARGE
 
-This linked message will add the amount specified in the message parameter to the current capacity of the battery, just one time. Note that the quantity can be negative.
+This linked message will add the Ws amount specified in the message parameter to the current capacity of the battery, just once. Note that the quantity can be negative.
 
 ### GET_BATTERY_STATUS
 
@@ -108,7 +108,9 @@ This is a linked message sent when there is a relatively significant change in t
 
 
 <div class="top-marker"><a href="#a-title">Top</a></div>
+
 # Menus
+
 ## MESSAGEID\_APPLICATION\_MENU\_OPEN and MESSAGEID\_APPLICATION\_MENU\_HANDLE\_INPUT 
 
 We've tried to take a lot of the mess of dialogs away, you will need a few things (check [the rainbow example](#rainbow-example) for details) like menu\_channel and a flag in `OEM_APPLICATION_INIT`, otherwise the dialog handling is hopefully fairly simple:
