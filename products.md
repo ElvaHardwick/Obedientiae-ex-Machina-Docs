@@ -39,6 +39,13 @@ Likewise, if your unit possesses a battery, the menu may be used to position the
 
 Requires a Controller to use, and links to it smoothly.
 
+## CH-Two
+![Product image](/Obedientiae-ex-Machina-Docs/images/products/CH_TWO_2022_1.png)
+
+Originally developed for our ANGELUS security drones, the CH-Two is now available to the public! (Please disregard any reports of ANGELUS security units turning on the unsuspecting human population.)
+
+Requires a Controller to use, and links to it smoothly.
+
 <div class="top-marker"><a href="#a-title">Top</a></div>
 # Battery
 
