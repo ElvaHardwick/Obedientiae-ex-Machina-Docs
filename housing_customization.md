@@ -16,7 +16,7 @@ Aesthetics and design features are important for any line of units, our Controll
 This isn't *super* supported, you might break the housing, you can always get a redelivery, but the easiest thing to do is to first create a backup.
 This document is also a work in progress and will be expended upon mostly based on request.
 
-That warning aside, the most important thing to know: For performance reasons, the housing *only* reads this configuration on first init, to re-read the configuration reset the script in side the housing.
+That warning aside, the most important thing to know: For performance reasons, the housing *only* reads this configuration on first init, to re-read the configuration reset the script in side the housing. That is to say. **After editing, reset the housing scripts**
 
 ### How to configure
 
